@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Track renders empty track correctly 1`] = `
+Array [
+  <li
+    className="MuiListItem-root WithStyles(ForwardRef(ListItem))-root-1 MuiListItem-gutters"
+    disabled={false}
+    id={null}
+    onClick={[Function]}
+  >
+    <div
+      className="MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+      />
+    </div>
+    <div
+      className="MuiListItemText-root"
+    />
+  </li>,
+  <hr
+    className="MuiDivider-root"
+  />,
+]
+`;
+
+exports[`Track renders full track correctly 1`] = `
+Array [
+  <li
+    className="MuiListItem-root WithStyles(ForwardRef(ListItem))-root-1 MuiListItem-gutters Mui-selected"
+    data-key={1}
+    disabled={false}
+    id="UExuVVBuX081eUM4MEVLbFd4c2EtUHFZd3c5ak5UbGVWdy4wNEU1MTI4NkZEMzVBN0JF"
+    onClick={[Function]}
+  >
+    <div
+      className="MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle"
+      >
+        <img
+          alt="The Cat Empire - Song for Elias"
+          className="MuiAvatar-img"
+          src="https://i.ytimg.com/vi/6Fot9g9YKyw/default.jpg"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+      >
+        The Cat Empire - Song for Elias
+      </span>
+    </div>
+  </li>,
+  <hr
+    className="MuiDivider-root"
+  />,
+]
+`;
+
+exports[`Track renders track  with empty video correctly 1`] = `
+Array [
+  <li
+    className="MuiListItem-root WithStyles(ForwardRef(ListItem))-root-1 MuiListItem-gutters Mui-selected"
+    data-key={1}
+    disabled={false}
+    id={null}
+    onClick={[Function]}
+  >
+    <div
+      className="MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+      />
+    </div>
+    <div
+      className="MuiListItemText-root"
+    />
+  </li>,
+  <hr
+    className="MuiDivider-root"
+  />,
+]
+`;

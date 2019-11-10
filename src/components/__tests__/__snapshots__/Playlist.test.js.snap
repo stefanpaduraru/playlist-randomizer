@@ -1,0 +1,368 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playlist should render with content state 1`] = `
+Array [
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item"
+      style={
+        Object {
+          "marginLeft": "20px",
+        }
+      }
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle makeStyles-avatar-104"
+      >
+        <img
+          className="MuiAvatar-img"
+          src="https://i.ytimg.com/vi/X0qwQqwKLlM/mqdefault.jpg"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item"
+    >
+      <h2
+        style={
+          Object {
+            "margin": "0px 10px 0px",
+            "padding": 0,
+          }
+        }
+      >
+         
+        take it ez
+      </h2>
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <button
+            aria-describedby={null}
+            className="MuiButtonBase-root MuiIconButton-root WithStyles(ForwardRef(IconButton))-root-120"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            title="Previous track"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 6h2v12H6zm3.5 6l8.5 6V6z"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <button
+            aria-describedby={null}
+            className="MuiButtonBase-root MuiIconButton-root WithStyles(ForwardRef(IconButton))-root-120"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            title="Play"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <button
+            aria-describedby={null}
+            className="MuiButtonBase-root MuiIconButton-root WithStyles(ForwardRef(IconButton))-root-120"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            title="Next track"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <button
+            aria-describedby={null}
+            className="MuiButtonBase-root MuiIconButton-root WithStyles(ForwardRef(IconButton))-root-120"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            title="Reshuffle playlist"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <button
+            aria-describedby={null}
+            className="MuiButtonBase-root MuiIconButton-root WithStyles(ForwardRef(IconButton))-root-120"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            title="Repeat is off"
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"
+                />
+              </svg>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
+    style={
+      Object {
+        "background": "rgba(255, 255, 255, 0.1",
+        "marginTop": 15,
+      }
+    }
+  >
+    <div
+      className="MuiCardContent-root"
+      style={
+        Object {
+          "height": "calc(100vh - 280px)",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
+        style={
+          Object {
+            "height": "100%",
+            "position": "relative",
+          }
+        }
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
+          style={
+            Object {
+              "height": "100%",
+              "position": "relative",
+            }
+          }
+        >
+          <p
+            className="MuiTypography-root makeStyles-videosTitle-105 MuiTypography-body1"
+          >
+            Videos: 
+            (1/1)
+          </p>
+          <ul
+            className="MuiList-root MuiList-padding"
+            style={
+              Object {
+                "height": "calc(100% - 29px)",
+                "overflow": "scroll",
+                "position": "relative",
+              }
+            }
+          >
+            <li
+              className="MuiListItem-root WithStyles(ForwardRef(ListItem))-root-205 MuiListItem-gutters"
+              data-key={0}
+              disabled={false}
+              id="UExuVVBuX081eUM4MTJFbzI5b0dmdDhEOXR6U0tBdjRxMS41NkI0NEY2RDEwNTU3Q0M2"
+              onClick={[Function]}
+            >
+              <div
+                className="MuiListItemAvatar-root"
+              >
+                <div
+                  className="MuiAvatar-root MuiAvatar-circle"
+                >
+                  <img
+                    alt="Lamb Angelica"
+                    className="MuiAvatar-img"
+                    src="https://i.ytimg.com/vi/X0qwQqwKLlM/default.jpg"
+                  />
+                </div>
+              </div>
+              <div
+                className="MuiListItemText-root"
+              >
+                <span
+                  className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+                >
+                  Lamb Angelica
+                </span>
+              </div>
+            </li>
+            <hr
+              className="MuiDivider-root"
+            />
+          </ul>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-12 MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
+        >
+          <div
+            style={
+              Object {
+                "height": "calc(100% - 29px)",
+                "margin": "29px auto 0px auto",
+                "width": "800",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

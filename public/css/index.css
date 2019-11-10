@@ -1,0 +1,66 @@
+html, body, #root {
+  min-height: 100vh;
+}
+
+.background {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+
+  background-color: #1d2136;
+  background-color: -moz-linear-gradient(45deg,  #1d2136 0%, #4f6091 100%);
+  background-color: -webkit-linear-gradient(45deg,  #1d2136 0%,#4f6091 100%);
+  background-color: linear-gradient(45deg,  #1d2136 0%,#4f6091 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2136', endColorstr='#4f6091',GradientType=1 );
+}
+
+.absolute-fullscreen {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  position: absolute;
+}
+
+.opacity-hidden {
+  opacity: 0;
+}
+
+.opacity-visible {
+  opacity: 0.75;
+}
+
+.animate-opacity {
+  -webkit-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.background-image {
+  background-position: 50% 50%;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  
+}
+body {
+  
+}
+ul.MuiList-root {
+  transition-property: height, overflow;
+  transition-duration: 0.35s;
+  transition-timing-function: ease-in;
+  transition-delay: none;
+  padding: 0;
+}
+div.MuiGrid-item {
+  transition-property: height, overflow, margin;
+  transition-duration: 0.35s;
+  transition-timing-function: ease-in;
+  transition-delay: none;
+}

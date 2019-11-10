@@ -1,0 +1,283 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard should render with content state 1`] = `
+<div
+  className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-align-items-xs-center"
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="MuiGrid-root Component-root-104 Component-root-288 MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <p
+          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-106 MuiTypography-body1"
+        >
+          Welcome to Playlist Randomizer
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-root Component-root-138 Component-root-289 MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <div
+      className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-140 MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-align-items-xs-center"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10 MuiGrid-grid-md-11 MuiGrid-grid-lg-11"
+        s={11}
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-141 MuiFormControl-marginNormal"
+        >
+          <div
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorSecondary MuiInput-colorSecondary MuiInputBase-formControl MuiInput-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiInput-input"
+              disabled={false}
+              id="search"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Enter a youtube playlist id or playlist URL"
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 MuiGrid-grid-md-1 MuiGrid-grid-lg-1"
+        s={1}
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Go
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <h4>
+      <a
+        className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="#"
+        id="playlistsToggler"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+      >
+        Your playlists (
+        1
+        )
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          style={
+            Object {
+              "verticalAlign": "middle",
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </a>
+    </h4>
+    <ul
+      className="MuiList-root Component-root-229 Component-root-290 MuiList-padding"
+    >
+      <li
+        className="MuiListItem-root MuiListItem-gutters"
+        disabled={false}
+        id="PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1"
+        onClick={[Function]}
+      >
+        <div
+          className="MuiListItemAvatar-root"
+        >
+          <div
+            className="MuiAvatar-root MuiAvatar-circle"
+          >
+            <img
+              className="MuiAvatar-img"
+              src="https://i.ytimg.com/vi/X0qwQqwKLlM/default.jpg"
+            />
+          </div>
+        </div>
+        <div
+          className="MuiListItemText-root"
+        >
+          <span
+            className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+          >
+            take it ez
+          </span>
+        </div>
+      </li>
+      <hr
+        className="MuiDivider-root"
+      />
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Dashboard should render with default state 1`] = `
+<div
+  className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-align-items-xs-center"
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="MuiGrid-root Component-root-104 Component-root-105 MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <p
+          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-106 MuiTypography-body1"
+        >
+          Welcome to Playlist Randomizer
+        </p>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <p
+          className="MuiTypography-root WithStyles(ForwardRef(Typography))-root-137 MuiTypography-body1"
+        >
+          This tool was created to give you better randomize features than youtube does.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="MuiGrid-root Component-root-138 Component-root-139 MuiGrid-item MuiGrid-grid-xs-12"
+  >
+    <div
+      className="MuiGrid-root WithStyles(ForwardRef(Grid))-root-140 MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-align-items-xs-center"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10 MuiGrid-grid-md-11 MuiGrid-grid-lg-11"
+        s={11}
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-141 MuiFormControl-marginNormal"
+        >
+          <div
+            className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorSecondary MuiInput-colorSecondary MuiInputBase-formControl MuiInput-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              className="MuiInputBase-input MuiInput-input"
+              disabled={false}
+              id="search"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Enter a youtube playlist id or playlist URL"
+              required={false}
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 MuiGrid-grid-md-1 MuiGrid-grid-lg-1"
+        s={1}
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Go
+          </span>
+          <span
+            className="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Playlist Item renders empty item correctly 1`] = `
+Array [
+  <li
+    className="MuiListItem-root MuiListItem-gutters"
+    disabled={false}
+  >
+    <div
+      className="MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+      />
+    </div>
+    <div
+      className="MuiListItemText-root"
+    />
+  </li>,
+  <hr
+    className="MuiDivider-root"
+  />,
+]
+`;
+
+exports[`Playlist Item renders full item correctly 1`] = `
+Array [
+  <li
+    className="MuiListItem-root MuiListItem-gutters"
+    disabled={false}
+    id={1}
+    onClick={[MockFunction]}
+  >
+    <div
+      className="MuiListItemAvatar-root"
+    >
+      <div
+        className="MuiAvatar-root MuiAvatar-circle"
+      >
+        <img
+          className="MuiAvatar-img"
+          src="https://i.ytimg.com/vi/0iMell14sVQ/default.jpg"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiListItemText-root"
+    >
+      <span
+        className="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+      >
+        Playlist #1
+      </span>
+    </div>
+  </li>,
+  <hr
+    className="MuiDivider-root"
+  />,
+]
+`;
