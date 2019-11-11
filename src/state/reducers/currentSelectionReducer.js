@@ -6,7 +6,7 @@ import {
   PLAYLIST_LOAD_DATA,
   PLAYLIST_RESET
 } from '../actions/playlist'
-import shuffle from '../helpers/randomize'
+import shuffle from '../../helpers/randomize'
 
 export default (state = {}, action) => {
   const { payload } = action;

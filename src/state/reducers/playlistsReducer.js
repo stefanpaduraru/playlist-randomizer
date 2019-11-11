@@ -3,7 +3,7 @@ import {
   PLAYLIST_ITEMS_FETCH_DATA_SUCCESS,
   PLAYLIST_ITEMS_FETCH_DATA_SUCCESS_SHUFFLE
  } from '../actions/playlist'
- import shuffle from '../helpers/randomize'
+ import shuffle from '../../helpers/randomize'
 
 export default (state = {}, action) => {
   const { payload, playlistId } = action

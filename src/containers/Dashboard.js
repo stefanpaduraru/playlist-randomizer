@@ -115,6 +115,7 @@ class Dashboard extends React.Component {
             {!playlistsCount &&
             <Grid item xs={12}>
               <PageSubTitle>This tool was created to give you better randomize features than youtube does.</PageSubTitle>
+              <PageSubTitleSecondary>Example playlist id: PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1</PageSubTitleSecondary>
             </Grid>}
           </Grid>
         </WelcomeContainer>
@@ -206,6 +207,13 @@ const PageSubTitle = styled(Typography)({
   '&': {
     color: TEXT_PRIMARY,
     fontSize: '1.15em'
+  }
+});
+
+const PageSubTitleSecondary = styled(Typography)({
+  '&': {
+    color: '#afafaf',
+    fontSize: '0.95em'
   }
 });
 

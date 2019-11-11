@@ -7,8 +7,12 @@ export function trackPageView(url) {
     return;
   }
 
-  ReactGA.initialize(analyticsId, { debug: false });
-  ReactGA.pageview(url || (window.location.href));
+  try {
+    ReactGA.initialize(analyticsId, { debug: false });
+    ReactGA.pageview(url || (window.location.href));
+  } catch (e) {
+
+  }
 }
 
 export function trackEvent(category, action, label) {
@@ -16,10 +20,14 @@ export function trackEvent(category, action, label) {
     return;
   }
 
-  ReactGA.initialize(analyticsId);
-  ReactGA.event({
-    category,
-    action,
-    label
-  });
+  try {
+    ReactGA.initialize(analyticsId);
+    ReactGA.event({
+      category,
+      action,
+      label
+    });
+  } catch (e) {
+
+  }
 }
