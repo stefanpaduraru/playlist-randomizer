@@ -235,6 +235,6 @@ const SearchBarContainer = styled(({ playlistsCount, ...other }) => <Grid {...ot
 
 const PlaylistContainer = styled(({ isPlaylistsShowing, ...other }) => <List {...other} />)({
   height: props => !props.isPlaylistsShowing ? 0 : 200,
-  overflow: props => !props.isPlaylistsShowing ? 'hidden' : 'scroll',
+  overflow: props => !props.isPlaylistsShowing ? 'hidden' : 'auto',
   maxHeight: 200
 });

@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
+  },
+  logo: {
+    margin: 0
   }
 }));
 
@@ -39,7 +42,7 @@ const Bar = (params) => {
   return (
     <AppBar position="static" elevation={0} className={classes.root}>
       <Toolbar>
-        <h2 onClick={() => history.push('/')}>
+        <h2 onClick={() => history.push('/')} className={classes.logo}>
           <Link
             href="/"
             onClick={e => e.preventDefault()}
