@@ -263,7 +263,7 @@ class Playlist extends React.Component {
                 }
                 {
                   !app.isItemsLoading && items && items.length > 0 &&
-                    <List style={{ position: 'relative', height: 'calc(100% - 29px)', overflow: 'scroll' }} >
+                    <List style={{ position: 'relative', height: 'calc(100% - 29px)', overflow: 'auto' }} >
                       {items.map((item, i) =>
                         <Track
                           key={i}
