@@ -47,7 +47,9 @@ const Bar = (params) => {
             href="/"
             onClick={e => e.preventDefault()}
             variant="inherit"
-            color="secondary">
+            color="secondary"
+            title="playlist-randomizer.com"
+            >
               Playlist Randomizer
           </Link>
         </h2>

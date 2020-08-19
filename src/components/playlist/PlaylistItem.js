@@ -23,4 +23,4 @@ const Track = ({
     <Divider />
   </React.Fragment>)
 
-export default Track;
+export default React.memo(Track);
