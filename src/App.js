@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/layout/NavBar';
+import About from './containers/About';
 import AppContainer from './components/layout/AppContainer';
 import Dashboard from './containers/Dashboard';
 import Playlist from './containers/Playlist';
@@ -17,9 +18,10 @@ class App extends Component {
             <AppContainer>
               <Switch>
                 <Route exact path="/" component={Dashboard}></Route>
+                <Route exact path="/about" component={About}></Route>
                 <Route exact path="/:pid" component={Playlist}></Route>
               </Switch>
-          </AppContainer>
+            </AppContainer>
         </MuiThemeProvider>
       </BrowserRouter>
     );

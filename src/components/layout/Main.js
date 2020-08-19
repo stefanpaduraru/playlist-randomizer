@@ -67,11 +67,11 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     display: 'flex',
-    height: 'calc(100vh - 64px)'
+    height: 'calc(100vh - 125px)'
   },
   paper: {
     background: 'transparent',
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(2),
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',

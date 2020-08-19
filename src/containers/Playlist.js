@@ -248,7 +248,7 @@ class Playlist extends React.Component {
         </Grid>
 
         <Card elevation={1} style={{ background: 'rgba(255, 255, 255, 0.1', marginTop: 15 }}>
-          <CardContent style= {{ height: 'calc(100vh - 280px)' }}>
+          <CardContent style= {{ height: 'calc(100vh - 300px)' }}>
             <Grid container justify="flex-start" spacing={1} style={{ position: 'relative', height: '100%' }}>
               <Grid item xs={12} sm={12} md={6} lg={6} style={{ position: 'relative', height: '100%' }}>
                 {
