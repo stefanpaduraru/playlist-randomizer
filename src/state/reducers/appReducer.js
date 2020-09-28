@@ -2,7 +2,10 @@ import {
   ITEMS_IS_LOADING,
   PLAYLIST_IS_LOADING
 } from '../actions/playlist';
-import { PLAYLISTS_IS_SHOWING } from '../actions/app';
+import {
+  PLAYLISTS_IS_SHOWING,
+  DYNAMIC_BACKGROUND
+} from '../actions/app';
 
 export default (state = {}, action) => {
   const { payload } = action;
@@ -25,6 +28,12 @@ export default (state = {}, action) => {
         ...state,
         isPlaylistsShowing: payload
       }
+    case DYNAMIC_BACKGROUND:
+      return {
+        ...state,
+        isDynamicBackgroundOn: payload
+      }
+
     default:
       return state
   }

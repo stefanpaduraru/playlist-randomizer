@@ -56,6 +56,13 @@ export function VideosTitle({ children }) {
 }
 
 class Playlist extends React.Component {
+  changeBackground() {
+    const { app } = this.props;
+    if (app.isDynamicBackgroundOn) {
+      setRandomBg();
+    }
+  }
+
   playVideo(item, index) {
     const { nowPlaying, isPlaying } = this.props;
 
@@ -72,7 +79,7 @@ class Playlist extends React.Component {
     isPlaying(true);
     this.scrollToVideo(item.id);
     trackEvent('video', 'play', item.contentDetails.videoId);
-    setRandomBg();
+    this.changeBackground();
   }
 
   playVideoByIndex(index) {
@@ -92,7 +99,7 @@ class Playlist extends React.Component {
     isPlaying(true);
     this.scrollToVideo(nextVideo.id);
     trackEvent('video', 'play', nextVideo.contentDetails.videoId);
-    setRandomBg();
+    this.changeBackground();
   }
 
   playNext() {
@@ -121,7 +128,7 @@ class Playlist extends React.Component {
         isPlaying(true);
         this.scrollToVideo(nextVideo.id);
         trackEvent('video', 'play', nextVideo.contentDetails.videoId);
-        setRandomBg();
+        this.changeBackground();
       }
     }
   }
@@ -144,7 +151,7 @@ class Playlist extends React.Component {
       isPlaying(true);
       this.scrollToVideo(prevVideo.id);
       trackEvent('video', 'play', prevVideo.contentDetails.videoId);
-      setRandomBg();
+      this.changeBackground();
     }
   }
 
@@ -210,7 +217,7 @@ class Playlist extends React.Component {
     this.toggleRepeat = this.toggleRepeat.bind(this);
     this.shufflePlaylist = this.shufflePlaylist.bind(this);
 
-    setRandomBg();
+    this.changeBackground();
     trackPageView();
   }
 

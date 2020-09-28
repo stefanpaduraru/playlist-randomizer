@@ -32,8 +32,13 @@ const About = () => {
           >paduraru.com</a>
         </AboutParagraph>
         <AboutParagraph>
-          Latest Improvements&nbsp;<small>(19 Aug 2020)</small>:
+          Latest Improvements
         </AboutParagraph>
+        <AboutParagraph>(28 Sept 2020)</AboutParagraph>
+        <ul>
+            <li><AboutParagraph>added dynamic background toggle to mitigate performance issues on slower machines </AboutParagraph></li>
+        </ul>
+        <AboutParagraph>(19 Aug 2020)</AboutParagraph>
           <ul>
             <li><AboutParagraph>using React.Memo on playlist items to improve performance</AboutParagraph></li>
             <li><AboutParagraph>added about section</AboutParagraph></li>
