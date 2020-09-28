@@ -8,7 +8,10 @@ import {
   loadPlaylistItems
 } from '../state/actionCreators/playlist';
 import { resetPlayer } from '../state/actionCreators/player';
-import { playlistsIsShowing } from '../state/actionCreators/app';
+import {
+  playlistsIsShowing,
+  toggleBackground,
+} from '../state/actionCreators/app';
 import PlaylistItem from '../components/playlist/PlaylistItem';
 import SearchBar from '../components/playlist/SearchBar';
 import { TEXT_PRIMARY } from '../constants/colors';
@@ -28,7 +31,12 @@ class Dashboard extends React.Component {
     this.state = { url: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.setUrl = this.setUrl.bind(this);
-    setRandomBg();
+
+    const { app } = this.props;
+    if (app.isDynamicBackgroundOn)
+    {
+      setRandomBg();
+    }
     trackPageView();
   }
 
@@ -177,7 +185,8 @@ const mapDispatchToProps = dispatch => ({
   loadPlaylistData: (data) => dispatch(loadPlaylistData(data)),
   playlistsIsShowing: show => dispatch(playlistsIsShowing(show)),
   resetCurrentSelection: () => dispatch(resetCurrentSelection()),
-  resetPlayer: () => dispatch(resetPlayer())
+  resetPlayer: () => dispatch(resetPlayer()),
+  toggleBackground: () => dispatch(toggleBackground())
 })
 
 const mapStateToProps = (state) => ({
@@ -191,7 +200,8 @@ Dashboard.propTypes = {
   loadPlaylistData: PropTypes.func,
   playlistsIsShowing: PropTypes.func,
   resetCurrentSelection: PropTypes.func,
-  resetPlayer: PropTypes.func
+  resetPlayer: PropTypes.func,
+  toggleBackground: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
