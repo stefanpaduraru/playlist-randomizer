@@ -6,19 +6,19 @@ import { FooterIconContainer } from './IconContainer';
 import WallpaperIcon from '@material-ui/icons/Wallpaper';
 import Crop32Icon from '@material-ui/icons/Crop32';
 import {
-  toggleBackground,
+  toggleVisualEffects,
 } from '../../../state/actionCreators/app';
 import setRandomBg from '../../../helpers/layout/bg';
 
-class DynamicBackgroundIcon extends React.Component {
+class VisualEffectsIcon extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleBackgroundOnOff = this.toggleBackgroundOnOff.bind(this);
+    this.toggleVisualEffectsOnOff = this.toggleVisualEffectsOnOff.bind(this);
   }
 
-  toggleBackgroundOnOff(toggle) {
-    const { toggleBackground } = this.props;
-    toggleBackground(toggle);
+  toggleVisualEffectsOnOff(toggle) {
+    const { toggleVisualEffects } = this.props;
+    toggleVisualEffects(toggle);
     setRandomBg(toggle);
   }
 
@@ -28,13 +28,13 @@ class DynamicBackgroundIcon extends React.Component {
     return (
       <Tooltip
         title={
-          `${!app.isDynamicBackgroundOn ? "Enable" : "Disable"} dynamic background`
+          `${!app.isVisualEffectsOn ? "Enable" : "Disable"} visual effects`
         }
         >
           <FooterIconContainer
-            onClick={() => this.toggleBackgroundOnOff(!app.isDynamicBackgroundOn)}
+            onClick={() => this.toggleVisualEffectsOnOff(!app.isVisualEffectsOn)}
           >
-            {!app.isDynamicBackgroundOn
+            {!app.isVisualEffectsOn
               ? <WallpaperIcon />
               : <Crop32Icon />}
           </FooterIconContainer>
@@ -44,15 +44,15 @@ class DynamicBackgroundIcon extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  toggleBackground: (toggle) => dispatch(toggleBackground(toggle))
+  toggleVisualEffects: (toggle) => dispatch(toggleVisualEffects(toggle))
 })
 
 const mapStateToProps = (state) => ({
   app: state.app,
 })
 
-DynamicBackgroundIcon.propTypes = {
-  toggleBackground: PropTypes.func,
+VisualEffectsIcon.propTypes = {
+  toggleVisualEffects: PropTypes.func,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DynamicBackgroundIcon);
+export default connect(mapStateToProps, mapDispatchToProps)(VisualEffectsIcon);

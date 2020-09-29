@@ -53,7 +53,7 @@ export function fetchPlaylistItems(playlistId, nextPageToken = false, applyShuff
       })
       .catch((error) => {
         dispatch(itemsIsLoading(false));
-        dispatch(itemsHasErrored(true));
+        dispatch(itemsHasErrored(error));
       });
   };
 }
@@ -62,10 +62,11 @@ export function loadItemsData(items) {
   return () => loadPlaylistItems(items);
 }
 
-export function itemsHasErrored(bool) {
+export function itemsHasErrored(err) {
+  console.log(err)
   return {
       type: ITEMS_HAS_ERRORED,
-      hasErrored: bool
+      hasErrored: true
   };
 }
 
@@ -98,17 +99,17 @@ export function loadPlaylistItems(items) {
   };
 }
 
-export function itemsIsLoading(bool) {
+export function itemsIsLoading(payload) {
   return {
       type: ITEMS_IS_LOADING,
-      isLoading: bool
+      payload
   };
 }
 
-export function playlistIsLoading(bool) {
+export function playlistIsLoading(payload) {
   return {
       type: PLAYLIST_IS_LOADING,
-      isLoading: bool
+      payload
   };
 }
 

@@ -4,7 +4,7 @@ import {
 } from '../actions/playlist';
 import {
   PLAYLISTS_IS_SHOWING,
-  DYNAMIC_BACKGROUND
+  VISUAL_EFFECTS_TOGGLE,
 } from '../actions/app';
 
 export default (state = {}, action) => {
@@ -28,10 +28,10 @@ export default (state = {}, action) => {
         ...state,
         isPlaylistsShowing: payload
       }
-    case DYNAMIC_BACKGROUND:
+    case VISUAL_EFFECTS_TOGGLE:
       return {
         ...state,
-        isDynamicBackgroundOn: payload
+        isVisualEffectsOn: payload
       }
 
     default:

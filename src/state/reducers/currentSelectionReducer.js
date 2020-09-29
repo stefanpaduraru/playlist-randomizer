@@ -26,19 +26,19 @@ export default (state = {}, action) => {
     case PLAYLIST_LOAD_ITEMS_DATA:
         return {
           ...state,
-          items: [...payload]
+          items: [].concat(shuffle(payload))
         }
 
     case PLAYLIST_ITEMS_FETCH_DATA_SUCCESS:
       return {
         ...state,
-        items: [...state.items || [], ...payload.items]
+        items: [].concat(state.items || [], payload.items),
       }
 
     case PLAYLIST_ITEMS_FETCH_DATA_SUCCESS_SHUFFLE:
       return {
         ...state,
-        items: [...state.items || [], ...shuffle(payload.items)]
+        items: [].concat(state.items || [], shuffle(payload.items)),
       }
     case PLAYLIST_RESET:
       return {

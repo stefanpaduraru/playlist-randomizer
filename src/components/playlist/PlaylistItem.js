@@ -1,26 +1,26 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import FancyPlaylistItem from './FancyPlaylistItem';
+import SimplePlaylistItem from './SimplePlaylistItem';
 
-const Track = ({
+const PlaylistItem = ({
   id,
   title,
   thumbUrl,
-  onClick
+  onClick,
+  visualEffectsEnabled,
 }) => (
-  <React.Fragment key={id}>
-    <ListItem onClick={onClick} id={id}>
-      <ListItemAvatar>
-        <Avatar src={thumbUrl} />
-      </ListItemAvatar>
-      <ListItemText
-        primary={title}
+  visualEffectsEnabled
+    ? <FancyPlaylistItem
+        onClick={onClick}
+        id={id}
+        title={title}
+        thumbUrl={thumbUrl}
       />
-    </ListItem>
-    <Divider />
-  </React.Fragment>)
+    : <SimplePlaylistItem
+        onClick={onClick}
+        id={id}
+        title={title}
+      />
+  )
 
-export default React.memo(Track);
+export default React.memo(PlaylistItem);

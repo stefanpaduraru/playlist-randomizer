@@ -26,7 +26,7 @@ export const defaultState = {
     isPlaylistLoading: false,
     isItemsLoading: false,
     isPlaylistsShowing: true,
-    isDynamicBackgroundOn: true,
+    isVisualEffectsOn: true,
   },
   player: {
     isPlaying: false,

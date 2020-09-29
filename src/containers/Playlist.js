@@ -13,7 +13,7 @@ import {
 } from '../state/actionCreators/player';
 import { loadPlaylist } from '../state/actionCreators/playlist';
 import ControlBar from '../components/control/ControlBar';
-import Track from '../components/Track';
+import Track from '../components/track/Track';
 import { trackPageView, trackEvent } from '../helpers/analytics';
 import setRandomBg from '../helpers/layout/bg';
 import shuffle from '../helpers/randomize';
@@ -58,7 +58,7 @@ export function VideosTitle({ children }) {
 class Playlist extends React.Component {
   changeBackground() {
     const { app } = this.props;
-    if (app.isDynamicBackgroundOn) {
+    if (app.isVisualEffectsOn) {
       setRandomBg();
     }
   }
@@ -230,14 +230,14 @@ class Playlist extends React.Component {
       <React.Fragment>
         <Grid container justify="flex-start" alignItems="center" spacing={0}>
           <Grid item style={{ marginLeft: '20px' }}>
-            <ImageAvatar
+            {app.isVisualEffectsOn && <ImageAvatar
               src={
                 snippet
                 ? snippet.thumbnails.medium.url
                   ? snippet.thumbnails.medium.url
                   : snippet.thumbnails.default.url
                 : ''}
-              />
+              />}
           </Grid>
           <Grid item>
             <h2 style={{ margin: '0px 10px 0px', padding: 0 }}>&nbsp;{snippet ? snippet.title : ''}</h2>
@@ -278,29 +278,30 @@ class Playlist extends React.Component {
                           video={item}
                           selected={player.nowPlaying.id === item.id}
                           playVideo={this.playVideo}
+                          visualEffectsEnabled={app.isVisualEffectsOn}
                         />
                       )}
                     </List>
                 }
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-                {
-                   !app.isItemsLoading && player.nowPlaying &&
-                    <ReactPlayer
-                      style={{ margin: '29px auto 0px auto' }}
-                      controls={true}
-                      width={'800'}
-                      height={'calc(100% - 29px)'}
-                      playing={player.isPlaying}
-                      url={(player.nowPlaying.videoId && `https://www.youtube.com/watch?v=${player.nowPlaying.videoId}`) || ''}
-                      onEnded={this.playbackEnded}
-                      onStart={this.playbackStarted}
-                      onPause={this.playbackPaused}
-                      onPlay={this.playbackStarted}
-                      onError={this.playbackError}
-                      // onProgress={this.playbackProgress}
-                    />
-                  }
+              {
+                !app.isItemsLoading && player.nowPlaying &&
+                <ReactPlayer
+                  style={{ margin: '29px auto 0px auto' }}
+                  controls={true}
+                  width={'800'}
+                  height={'calc(100% - 29px)'}
+                  playing={player.isPlaying}
+                  url={(player.nowPlaying.videoId && `https://www.youtube.com/watch?v=${player.nowPlaying.videoId}`) || ''}
+                  onEnded={this.playbackEnded}
+                  onStart={this.playbackStarted}
+                  onPause={this.playbackPaused}
+                  onPlay={this.playbackStarted}
+                  onError={this.playbackError}
+                  // onProgress={this.playbackProgress}
+                />
+              }
               </Grid>
             </Grid>
         </CardContent>

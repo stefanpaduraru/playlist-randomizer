@@ -34,6 +34,11 @@ const About = () => {
         <AboutParagraph>
           Latest Improvements
         </AboutParagraph>
+        <AboutParagraph>(29 Sept 2020)</AboutParagraph>
+        <ul>
+            <li><AboutParagraph>added visual effects toggle in place of the dynamic background toggle </AboutParagraph></li>
+            <li><AboutParagraph>various performance improvements (a 5k videos playlist with effects turned off takes around a minute) </AboutParagraph></li>
+        </ul>
         <AboutParagraph>(28 Sept 2020)</AboutParagraph>
         <ul>
             <li><AboutParagraph>added dynamic background toggle to mitigate performance issues on slower machines </AboutParagraph></li>
