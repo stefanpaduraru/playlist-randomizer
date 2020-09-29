@@ -1,6 +1,6 @@
 import {
   PLAYLISTS_IS_SHOWING,
-  DYNAMIC_BACKGROUND,
+  VISUAL_EFFECTS_TOGGLE,
 } from '../actions/app';
 
 export function playlistsIsShowing(show) {
@@ -10,9 +10,9 @@ export function playlistsIsShowing(show) {
   };
 }
 
-export function toggleBackground(toggle) {
+export function toggleVisualEffects(toggle) {
   return {
-    type: DYNAMIC_BACKGROUND,
+    type: VISUAL_EFFECTS_TOGGLE,
     payload: toggle
   };
 }

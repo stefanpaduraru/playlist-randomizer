@@ -10,7 +10,6 @@ import {
 import { resetPlayer } from '../state/actionCreators/player';
 import {
   playlistsIsShowing,
-  toggleBackground,
 } from '../state/actionCreators/app';
 import PlaylistItem from '../components/playlist/PlaylistItem';
 import SearchBar from '../components/playlist/SearchBar';
@@ -33,7 +32,7 @@ class Dashboard extends React.Component {
     this.setUrl = this.setUrl.bind(this);
 
     const { app } = this.props;
-    if (app.isDynamicBackgroundOn)
+    if (app.isVisualEffectsOn)
     {
       setRandomBg();
     }
@@ -161,14 +160,16 @@ class Dashboard extends React.Component {
               {
                 Object.entries(playlists).map(item => {
                   const [key, v] = item;
-                  return <PlaylistItem
-                    id={key}
-                    key={key}
-                    thumbUrl={(v.snippet.thumbnails.default && v.snippet.thumbnails.default.url) || ''}
-                    onClick={() => this.navigateToPlaylist(key)}
-                    title={v.snippet.title || ''}
-                    publishedAt={(v.snippet.publishedAt && new Date(v.snippet.publishedAt).toDateString()) || ''}
-                  />
+                  return (
+                    <PlaylistItem
+                      id={key}
+                      key={key}
+                      thumbUrl={(v.snippet.thumbnails.default && v.snippet.thumbnails.default.url) || ''}
+                      onClick={() => this.navigateToPlaylist(key)}
+                      title={v.snippet.title || ''}
+                      publishedAt={(v.snippet.publishedAt && new Date(v.snippet.publishedAt).toDateString()) || ''}
+                      visualEffectsEnabled={app.isVisualEffectsOn}
+                    />)
                 })
               }
             </PlaylistContainer>
@@ -186,7 +187,6 @@ const mapDispatchToProps = dispatch => ({
   playlistsIsShowing: show => dispatch(playlistsIsShowing(show)),
   resetCurrentSelection: () => dispatch(resetCurrentSelection()),
   resetPlayer: () => dispatch(resetPlayer()),
-  toggleBackground: () => dispatch(toggleBackground())
 })
 
 const mapStateToProps = (state) => ({
@@ -201,7 +201,6 @@ Dashboard.propTypes = {
   playlistsIsShowing: PropTypes.func,
   resetCurrentSelection: PropTypes.func,
   resetPlayer: PropTypes.func,
-  toggleBackground: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
