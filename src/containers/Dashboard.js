@@ -5,7 +5,8 @@ import {
   fetchPlaylist,
   loadPlaylistData,
   resetCurrentSelection,
-  loadPlaylistItems
+  loadPlaylistItems,
+  removePlaylist,
 } from '../state/actionCreators/playlist';
 import { resetPlayer } from '../state/actionCreators/player';
 import {
@@ -58,8 +59,21 @@ class Dashboard extends React.Component {
       if (!reload) {
         loadPlaylistData(data);
         setTimeout(() => loadItemsData(data.items), 50);
+      } else {
+        fetchPlaylist(id)
       }
       trackEvent('playlist', 'load', id);
+    }
+  }
+
+  deletePlaylist(id) {
+    const { removePlaylist } = this.props;
+
+    if (id) {
+      resetCurrentSelection();
+      resetPlayer();
+      removePlaylist(id);
+      trackEvent('playlist', 'remove', id);
     }
   }
 
@@ -76,6 +90,12 @@ class Dashboard extends React.Component {
     if (!playlistId) {
       return;
     }
+
+    this.fetchPlaylistAndTrack(playlistId);
+  }
+
+  fetchPlaylistAndTrack(playlistId) {
+    const { getPlaylist } = this.props;
 
     trackEvent('playlist', 'fetch', playlistId);
     this.navigateToPlaylist(playlistId, true);
@@ -160,14 +180,17 @@ class Dashboard extends React.Component {
               {
                 Object.entries(playlists).map(item => {
                   const [key, v] = item;
+
                   return (
                     <PlaylistItem
                       id={key}
                       key={key}
-                      thumbUrl={(v.snippet.thumbnails.default && v.snippet.thumbnails.default.url) || ''}
+                      thumbUrl={(v.snippet && v.snippet.thumbnails && v.snippet.thumbnails.default && v.snippet.thumbnails.default.url) || ''}
                       onClick={() => this.navigateToPlaylist(key)}
-                      title={v.snippet.title || ''}
-                      publishedAt={(v.snippet.publishedAt && new Date(v.snippet.publishedAt).toDateString()) || ''}
+                      onRefresh={() => this.fetchPlaylistAndTrack(key)}
+                      onDelete={() => this.deletePlaylist(key)}
+                      title={(v.snippet && v.snippet.title) || 'Unknown title'}
+                      publishedAt={v.snippet && (v.snippet.publishedAt && new Date(v.snippet.publishedAt).toDateString()) || ''}
                       visualEffectsEnabled={app.isVisualEffectsOn}
                     />)
                 })
@@ -187,6 +210,7 @@ const mapDispatchToProps = dispatch => ({
   playlistsIsShowing: show => dispatch(playlistsIsShowing(show)),
   resetCurrentSelection: () => dispatch(resetCurrentSelection()),
   resetPlayer: () => dispatch(resetPlayer()),
+  removePlaylist: (id) => dispatch(removePlaylist(id))
 })
 
 const mapStateToProps = (state) => ({
@@ -201,6 +225,7 @@ Dashboard.propTypes = {
   playlistsIsShowing: PropTypes.func,
   resetCurrentSelection: PropTypes.func,
   resetPlayer: PropTypes.func,
+  removePlaylist: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

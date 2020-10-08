@@ -8,6 +8,8 @@ const PlaylistItem = ({
   thumbUrl,
   onClick,
   visualEffectsEnabled,
+  onDelete,
+  onRefresh
 }) => (
   visualEffectsEnabled
     ? <FancyPlaylistItem
@@ -15,11 +17,15 @@ const PlaylistItem = ({
         id={id}
         title={title}
         thumbUrl={thumbUrl}
+        onDelete={onDelete}
+        onRefresh={onRefresh}
       />
     : <SimplePlaylistItem
         onClick={onClick}
         id={id}
         title={title}
+        onDelete={onDelete}
+        onRefresh={onRefresh}
       />
   )
 

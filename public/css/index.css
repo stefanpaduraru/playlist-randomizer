@@ -64,3 +64,11 @@ div.MuiGrid-item {
   transition-timing-function: ease-in;
   transition-delay: none;
 }
+
+.MuiListItemIcon-root {
+  min-width: 20px !important;
+}
+
+.MuiListItemIcon-root > .MuiIconButton-root {
+  padding: 5px;
+}

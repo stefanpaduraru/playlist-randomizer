@@ -8,7 +8,8 @@ import {
   PLAYLIST_LOAD_ITEMS_DATA,
   PLAYLIST_LOAD_DATA,
   PLAYLIST_RESET,
-  ITEMS_HAS_ERRORED
+  ITEMS_HAS_ERRORED,
+  PLAYLIST_REMOVE,
 } from '../actions/playlist';
 
 export function fetchPlaylist(playlistId, applyShuffle) {
@@ -67,6 +68,13 @@ export function itemsHasErrored(err) {
   return {
       type: ITEMS_HAS_ERRORED,
       hasErrored: true
+  };
+}
+
+export function removePlaylist(payload) {
+  return {
+      type: PLAYLIST_REMOVE,
+      payload
   };
 }
 

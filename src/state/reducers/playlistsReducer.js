@@ -1,7 +1,8 @@
 import {
   PLAYLIST_FETCH_DATA_SUCCESS,
   PLAYLIST_ITEMS_FETCH_DATA_SUCCESS,
-  PLAYLIST_ITEMS_FETCH_DATA_SUCCESS_SHUFFLE
+  PLAYLIST_ITEMS_FETCH_DATA_SUCCESS_SHUFFLE,
+  PLAYLIST_REMOVE,
  } from '../actions/playlist'
 
 export default (state = {}, action) => {
@@ -28,17 +29,28 @@ export default (state = {}, action) => {
       }
 
     case PLAYLIST_ITEMS_FETCH_DATA_SUCCESS_SHUFFLE:
-          // eslint-disable-next-line no-case-declarations
-          const p = state[`${playlistId}`];
+      // eslint-disable-next-line no-case-declarations
+      const p = state[`${playlistId}`];
 
-          return {
-            ...state,
-            [`${playlistId}`]: {
-              id: p.id,
-              snippet: p.snippet,
-              items: [].concat(p.items || [], payload.items),
-            }
-          }
+      return {
+        ...state,
+        [`${playlistId}`]: {
+          id: p.id,
+          snippet: p.snippet,
+          items: [].concat(p.items || [], payload.items),
+        }
+      }
+
+    case PLAYLIST_REMOVE:
+      const filtered = Object.keys(state).filter(key => key != payload)
+
+      return {
+        ... filtered.reduce((playlists, key) => {
+          playlists[`${key}`] = { ...state[key] }
+          return playlists;
+        }, {}),
+      }
+
     default:
       return state
   }
