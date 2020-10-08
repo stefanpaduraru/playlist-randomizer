@@ -19,4 +19,16 @@ export const FooterIconContainer = styled(IconButton)({
     color: '#fff !important'
   }
 });
+
+export const PlaylistIconContainer = styled(IconButton)({
+  '&': {
+  },
+  '& > span > svg': {
+    color: BUTTON_ACTIVE
+  },
+  '&:hover > span > svg': {
+    color: '#fff'
+  },
+
+});
   
