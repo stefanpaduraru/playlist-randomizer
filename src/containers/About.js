@@ -34,6 +34,10 @@ const About = () => {
         <AboutParagraph>
           Latest Improvements
         </AboutParagraph>
+        <AboutParagraph>(08 Oct 2020)</AboutParagraph>
+        <ul>
+            <li><AboutParagraph>added more control over playlist items (refresh, remove) </AboutParagraph></li>
+        </ul>
         <AboutParagraph>(29 Sept 2020)</AboutParagraph>
         <ul>
             <li><AboutParagraph>added visual effects toggle in place of the dynamic background toggle </AboutParagraph></li>

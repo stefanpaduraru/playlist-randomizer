@@ -42,10 +42,10 @@ export default (state = {}, action) => {
       }
 
     case PLAYLIST_REMOVE:
-      const filtered = Object.keys(state).filter(key => key != payload)
+      const filtered = Object.keys(state).filter(key => key !== payload)
 
       return {
-        ... filtered.reduce((playlists, key) => {
+        ...filtered.reduce((playlists, key) => {
           playlists[`${key}`] = { ...state[key] }
           return playlists;
         }, {}),

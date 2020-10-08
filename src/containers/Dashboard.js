@@ -77,6 +77,14 @@ class Dashboard extends React.Component {
     }
   }
 
+  getPlaylistTitle(playlist) {
+    return playlist?.snippet?.title || 'Unknown title'
+  }
+
+  getPlaylistThumbUrl(playlist) {
+    return playlist?.snippet?.thumbnails?.default?.url || ''
+  }
+
   handleSubmit(e) {
     const { url } = this.state;
 
@@ -85,8 +93,6 @@ class Dashboard extends React.Component {
     }
 
     const playlistId = this.getPlaylistIdFromURL(url);
-    const { getPlaylist } = this.props;
-
     if (!playlistId) {
       return;
     }
@@ -185,13 +191,12 @@ class Dashboard extends React.Component {
                     <PlaylistItem
                       id={key}
                       key={key}
-                      thumbUrl={(v.snippet && v.snippet.thumbnails && v.snippet.thumbnails.default && v.snippet.thumbnails.default.url) || ''}
-                      onClick={() => this.navigateToPlaylist(key)}
-                      onRefresh={() => this.fetchPlaylistAndTrack(key)}
-                      onDelete={() => this.deletePlaylist(key)}
-                      title={(v.snippet && v.snippet.title) || 'Unknown title'}
-                      publishedAt={v.snippet && (v.snippet.publishedAt && new Date(v.snippet.publishedAt).toDateString()) || ''}
+                      title={this.getPlaylistTitle(v)}
+                      thumbUrl={this.getPlaylistThumbUrl(v)}
                       visualEffectsEnabled={app.isVisualEffectsOn}
+                      onClick={() => this.navigateToPlaylist(key)}
+                      onDelete={() => this.deletePlaylist(key)}
+                      onRefresh={() => this.fetchPlaylistAndTrack(key)}
                     />)
                 })
               }
