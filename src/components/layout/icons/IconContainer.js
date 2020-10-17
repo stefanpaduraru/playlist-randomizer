@@ -29,6 +29,20 @@ export const PlaylistIconContainer = styled(IconButton)({
   '&:hover > span > svg': {
     color: '#fff'
   },
+});
 
+export const DefaultIconContainer = styled(IconButton)({
+  '&': {
+  },
+  '& > span > svg': {
+    color: BUTTON_ACTIVE
+  },
+  '&:hover > span > svg': {
+    color: '#fff'
+  },
+  '&:hover': {
+    backgroundColor: BUTTON_HOVER,
+    color: '#fff !important'
+  }
 });
   

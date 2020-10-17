@@ -26,6 +26,7 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import ReactPlayer from 'react-player'
+import { BackIcon } from '../components/layout/icons/BackIcon';
 
 const useStyles = makeStyles({
   avatar: {
@@ -106,7 +107,7 @@ class Playlist extends React.Component {
     const { player, playlist, loadPlaylistData, nowPlaying, isPlaying } = this.props;
 
     if (playlist.items && playlist.items.length === player.nowPlaying.index + 1 && player.isRepeat) {
-      loadPlaylistData({ ...playlist, items: shuffle(playlist.items) });
+      loadPlaylistData({ ...playlist, items: shuffle(playlist.items || []) });
       this.playVideoByIndex(0);
     } else {
       const nextVideo = playlist.items && playlist.items.length
@@ -192,7 +193,7 @@ class Playlist extends React.Component {
 
   shufflePlaylist() {
     const { playlist, loadPlaylistData } = this.props;
-    loadPlaylistData({ ...playlist, items: shuffle(playlist.items) });
+    loadPlaylistData({ ...playlist, items: shuffle(playlist.items || []) });
 
     trackEvent('playlist', 'load', playlist.id);
     this.playVideoByIndex(0);
@@ -222,7 +223,17 @@ class Playlist extends React.Component {
   }
 
   render() {
-    const { player, playlist: { snippet, items }, app } = this.props;
+    const { player, playlist, app } = this.props;
+
+    if (!playlist || !playlist.id) {
+      return (
+        <div>
+          <h3>Could not load playlist.
+          <BackIcon /></h3>
+        </div>
+      )
+    }
+    const { snippet, items } = playlist;
     items && items.length && !player.isPlaying && !player.nowPlaying.id &&
       this.playVideoByIndex(0);
 
@@ -259,14 +270,18 @@ class Playlist extends React.Component {
             <Grid container justify="flex-start" spacing={1} style={{ position: 'relative', height: '100%' }}>
               <Grid item xs={12} sm={12} md={6} lg={6} style={{ position: 'relative', height: '100%' }}>
                 {
+                  <>
                   <VideosTitle>Videos:&nbsp;
                     {!app.isItemsLoading && items && `(${player.nowPlaying.index + 1}/${items.length})`}
+                  </VideosTitle>
+                  <>
                     {app.isItemsLoading && items &&
                     <React.Fragment>
                         &nbsp;
                       <CircularProgress size={14}/>
                     </React.Fragment>}
-                  </VideosTitle>
+                  </>
+                </>
                 }
                 {
                   !app.isItemsLoading && items && items.length > 0 &&

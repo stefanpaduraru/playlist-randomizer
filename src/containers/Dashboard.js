@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
 
       if (!reload) {
         loadPlaylistData(data);
-        setTimeout(() => loadItemsData(data.items), 50);
+        setTimeout(() => loadItemsData(data.items || []), 50);
       } else {
         fetchPlaylist(id)
       }
