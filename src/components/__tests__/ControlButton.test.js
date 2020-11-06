@@ -16,9 +16,9 @@ describe('Control Button', () => {
       tooltip: 'Tooltip',
       click: mockFn,
       icon: <ShuffleIcon />,
-      active: false
-    }
-    const tree = renderer.create(<ControlButton {...props}/>).toJSON();
+      active: false,
+    };
+    const tree = renderer.create(<ControlButton {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

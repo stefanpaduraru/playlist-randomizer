@@ -9,23 +9,13 @@ import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { PlaylistIconContainer } from '../layout/icons/IconContainer';
 
-const FancyPlaylistItem = ({
-  id,
-  title,
-  thumbUrl,
-  onClick,
-  onRefresh,
-  onDelete,
-}) => (
+const FancyPlaylistItem = ({ id, title, thumbUrl, onClick, onRefresh, onDelete }) => (
   <React.Fragment key={id}>
     <ListItem>
-      <ListItemAvatar  onClick={onClick} id={id}>
+      <ListItemAvatar onClick={onClick} id={id}>
         <Avatar src={thumbUrl} />
       </ListItemAvatar>
-      <ListItemText
-        primary={title}
-        onClick={onClick} id={id}
-      />
+      <ListItemText primary={title} onClick={onClick} id={id} />
       <ListItemIcon>
         <PlaylistIconContainer onClick={onDelete}>
           <RemoveCircleOutline />
@@ -34,10 +24,11 @@ const FancyPlaylistItem = ({
       <ListItemIcon>
         <PlaylistIconContainer onClick={onRefresh}>
           <RefreshIcon />
-          </PlaylistIconContainer>
+        </PlaylistIconContainer>
       </ListItemIcon>
     </ListItem>
     <Divider />
-  </React.Fragment>)
+  </React.Fragment>
+);
 
 export default React.memo(FancyPlaylistItem);

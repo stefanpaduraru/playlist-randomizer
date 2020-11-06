@@ -8,7 +8,7 @@ import { playlistsIsShowing } from '../../state/actionCreators/app';
 import { resetPlayer } from '../../state/actionCreators/player';
 import {
   resetCurrentSelection,
-  loadPlaylistData
+  loadPlaylistData,
 } from '../../state/actionCreators/playlist';
 import testPlaylist from '../../constants/testplaylist';
 
@@ -27,26 +27,26 @@ describe('Dashboard', () => {
     contentStore = mockStore({
       ...defaultState,
       currentSelection: {
-        ...testPlaylist
+        ...testPlaylist,
       },
       playlists: {
-        'PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1': {
-          ...testPlaylist
-        }
-      }
+        PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1: {
+          ...testPlaylist,
+        },
+      },
     });
     contentStore.dispatch = jest.fn();
 
     defaultComponent = renderer.create(
       <Provider store={defaultStore}>
         <Dashboard />
-      </Provider>
+      </Provider>,
     );
 
     contentComponent = renderer.create(
       <Provider store={contentStore}>
         <Dashboard />
-      </Provider>
+      </Provider>,
     );
   });
 
@@ -56,17 +56,13 @@ describe('Dashboard', () => {
 
   it('should reset current selection', () => {
     renderer.act(() => {
-      expect(contentStore.dispatch).toHaveBeenCalledWith(
-        resetCurrentSelection()
-      );
+      expect(contentStore.dispatch).toHaveBeenCalledWith(resetCurrentSelection());
     });
   });
 
   it('should reset player', () => {
     renderer.act(() => {
-      expect(contentStore.dispatch).toHaveBeenCalledWith(
-        resetPlayer()
-      );
+      expect(contentStore.dispatch).toHaveBeenCalledWith(resetPlayer());
     });
   });
 
@@ -76,24 +72,27 @@ describe('Dashboard', () => {
 
   it('should hide playlists on <a> click', () => {
     renderer.act(() => {
-      contentComponent.root.findByProps({
-        className: 'MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary'
-      }).props.onClick();
+      contentComponent.root
+        .findByProps({
+          className:
+            'MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary',
+        })
+        .props.onClick();
 
-      expect(contentStore.dispatch).toHaveBeenCalledWith(
-        playlistsIsShowing(false)
-      );
+      expect(contentStore.dispatch).toHaveBeenCalledWith(playlistsIsShowing(false));
     });
   });
 
   it('should load playlist data', () => {
     renderer.act(() => {
-      contentComponent.root.findByProps({
-        id: 'PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1'
-      }).props.onClick();
+      contentComponent.root
+        .findByProps({
+          id: 'PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1',
+        })
+        .props.onClick();
 
       expect(contentStore.dispatch).toHaveBeenCalledWith(
-        loadPlaylistData({ ...testPlaylist })
+        loadPlaylistData({ ...testPlaylist }),
       );
     });
   });

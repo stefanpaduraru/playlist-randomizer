@@ -18,9 +18,9 @@ describe('Control Bar', () => {
       isPlaying: false,
       toggleRepeat: mockFn,
       repeat: false,
-      shuffle: mockFn
-    }
+      shuffle: mockFn,
+    };
     const tree = renderer.create(<ControlBar {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
-  })
+  });
 });

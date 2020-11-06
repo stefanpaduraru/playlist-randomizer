@@ -13,15 +13,15 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <MuiThemeProvider theme={theme}>
-            <NavBar />
-            <AppContainer>
-              <Switch>
-                <Route exact path="/" component={Dashboard}></Route>
-                <Route exact path="/about" component={About}></Route>
-                <Route exact path="/:pid" component={Playlist}></Route>
-              </Switch>
-            </AppContainer>
+        <MuiThemeProvider theme={theme}>
+          <NavBar />
+          <AppContainer>
+            <Switch>
+              <Route exact path="/" component={Dashboard}></Route>
+              <Route exact path="/about" component={About}></Route>
+              <Route exact path="/:pid" component={Playlist}></Route>
+            </Switch>
+          </AppContainer>
         </MuiThemeProvider>
       </BrowserRouter>
     );

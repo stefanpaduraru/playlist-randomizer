@@ -9,9 +9,7 @@ import {
   removePlaylist,
 } from '../state/actionCreators/playlist';
 import { resetPlayer } from '../state/actionCreators/player';
-import {
-  playlistsIsShowing,
-} from '../state/actionCreators/app';
+import { playlistsIsShowing } from '../state/actionCreators/app';
 import PlaylistItem from '../components/playlist/PlaylistItem';
 import SearchBar from '../components/playlist/SearchBar';
 import { TEXT_PRIMARY } from '../constants/colors';
@@ -33,8 +31,7 @@ class Dashboard extends React.Component {
     this.setUrl = this.setUrl.bind(this);
 
     const { app } = this.props;
-    if (app.isVisualEffectsOn)
-    {
+    if (app.isVisualEffectsOn) {
       setRandomBg();
     }
     trackPageView();
@@ -54,13 +51,13 @@ class Dashboard extends React.Component {
       history && history.push('/' + id);
       const data = playlists
         ? { ...playlists[`${id}`] }
-        : { 'id': null, 'snippet': null, 'items': [] }
+        : { id: null, snippet: null, items: [] };
 
       if (!reload) {
         loadPlaylistData(data);
         setTimeout(() => loadItemsData(data.items || []), 50);
       } else {
-        fetchPlaylist(id)
+        fetchPlaylist(id);
       }
       trackEvent('playlist', 'load', id);
     }
@@ -78,11 +75,11 @@ class Dashboard extends React.Component {
   }
 
   getPlaylistTitle(playlist) {
-    return playlist?.snippet?.title || 'Unknown title'
+    return playlist?.snippet?.title || 'Unknown title';
   }
 
   getPlaylistThumbUrl(playlist) {
-    return playlist?.snippet?.thumbnails?.default?.url || ''
+    return playlist?.snippet?.thumbnails?.default?.url || '';
   }
 
   handleSubmit(e) {
@@ -116,7 +113,7 @@ class Dashboard extends React.Component {
     if (match && match[1]) {
       return match[1] || false;
     } else {
-      const expID = /^\w{6}_?-?\w{10,18}_?-?\w{10,18}$/
+      const expID = /^\w{6}_?-?\w{10,18}_?-?\w{10,18}$/;
       match = url.match(expID);
 
       if (match) {
@@ -127,7 +124,7 @@ class Dashboard extends React.Component {
   }
 
   setUrl(e) {
-    this.setState({ ...this.state, url: e.target.value })
+    this.setState({ ...this.state, url: e.target.value });
   }
 
   render() {
@@ -135,9 +132,15 @@ class Dashboard extends React.Component {
     const playlistsCount = Object.entries(playlists).length;
 
     return (
-      <Grid container alignItems="center" spacing={1} style={{ flex: 1, justifyContent: 'center' }}>
+      <Grid
+        container
+        alignItems="center"
+        spacing={1}
+        style={{ flex: 1, justifyContent: 'center' }}
+      >
         <WelcomeContainer
-          item xs={12}
+          item
+          xs={12}
           isPlaylistsShowing={app.isPlaylistsShowing}
           playlistsCount={playlistsCount}
         >
@@ -145,83 +148,84 @@ class Dashboard extends React.Component {
             <Grid item xs={12}>
               <PageTitle>Welcome to Playlist Randomizer</PageTitle>
             </Grid>
-            {!playlistsCount &&
-            <Grid item xs={12}>
-              <PageSubTitle>This tool was created to give you better randomize features than Youtube does.</PageSubTitle>
-              <PageSubTitleSecondary>Example playlist id: PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1</PageSubTitleSecondary>
-            </Grid>}
+            {!playlistsCount && (
+              <Grid item xs={12}>
+                <PageSubTitle>
+                  This tool was created to give you better randomize features than Youtube
+                  does.
+                </PageSubTitle>
+                <PageSubTitleSecondary>
+                  Example playlist id: PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1
+                </PageSubTitleSecondary>
+              </Grid>
+            )}
           </Grid>
         </WelcomeContainer>
 
-        <SearchBarContainer
-          item
-          xs={12}
-          playlistsCount={playlistsCount}
-        >
-          <SearchBar
-            submit={this.handleSubmit}
-            setUrl={this.setUrl}
-          />
+        <SearchBarContainer item xs={12} playlistsCount={playlistsCount}>
+          <SearchBar submit={this.handleSubmit} setUrl={this.setUrl} />
         </SearchBarContainer>
-        {playlists && playlistsCount > 0 &&
+        {playlists && playlistsCount > 0 && (
           <Grid item xs={12}>
             <h4>
               <Link
                 id="playlistsToggler"
                 href="#"
                 variant="inherit"
-                onClick={(e) => {
+                onClick={e => {
                   e && e.preventDefault();
-                  playlistsIsShowing(!app.isPlaylistsShowing)
+                  playlistsIsShowing(!app.isPlaylistsShowing);
                 }}
               >
                 Your playlists ({playlistsCount})
-                {!app.isPlaylistsShowing && <ArrowRightIcon style={{ verticalAlign: 'middle' }}/>}
-                {!!app.isPlaylistsShowing && <ArrowDropDownIcon style={{ verticalAlign: 'middle' }}/>}
+                {!app.isPlaylistsShowing && (
+                  <ArrowRightIcon style={{ verticalAlign: 'middle' }} />
+                )}
+                {!!app.isPlaylistsShowing && (
+                  <ArrowDropDownIcon style={{ verticalAlign: 'middle' }} />
+                )}
               </Link>
             </h4>
 
-            <PlaylistContainer
-              isPlaylistsShowing={app.isPlaylistsShowing}>
-              {
-                Object.entries(playlists).map(item => {
-                  const [key, v] = item;
+            <PlaylistContainer isPlaylistsShowing={app.isPlaylistsShowing}>
+              {Object.entries(playlists).map(item => {
+                const [key, v] = item;
 
-                  return (
-                    <PlaylistItem
-                      id={key}
-                      key={key}
-                      title={this.getPlaylistTitle(v)}
-                      thumbUrl={this.getPlaylistThumbUrl(v)}
-                      visualEffectsEnabled={app.isVisualEffectsOn}
-                      onClick={() => this.navigateToPlaylist(key)}
-                      onDelete={() => this.deletePlaylist(key)}
-                      onRefresh={() => this.fetchPlaylistAndTrack(key)}
-                    />)
-                })
-              }
+                return (
+                  <PlaylistItem
+                    id={key}
+                    key={key}
+                    title={this.getPlaylistTitle(v)}
+                    thumbUrl={this.getPlaylistThumbUrl(v)}
+                    visualEffectsEnabled={app.isVisualEffectsOn}
+                    onClick={() => this.navigateToPlaylist(key)}
+                    onDelete={() => this.deletePlaylist(key)}
+                    onRefresh={() => this.fetchPlaylistAndTrack(key)}
+                  />
+                );
+              })}
             </PlaylistContainer>
           </Grid>
-        }
+        )}
       </Grid>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   getPlaylist: (playlistId, shuffle) => dispatch(fetchPlaylist(playlistId, shuffle)),
-  loadItemsData: (data) => dispatch(loadPlaylistItems(data)),
-  loadPlaylistData: (data) => dispatch(loadPlaylistData(data)),
+  loadItemsData: data => dispatch(loadPlaylistItems(data)),
+  loadPlaylistData: data => dispatch(loadPlaylistData(data)),
   playlistsIsShowing: show => dispatch(playlistsIsShowing(show)),
   resetCurrentSelection: () => dispatch(resetCurrentSelection()),
   resetPlayer: () => dispatch(resetPlayer()),
-  removePlaylist: (id) => dispatch(removePlaylist(id))
-})
+  removePlaylist: id => dispatch(removePlaylist(id)),
+});
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   app: state.app,
-  playlists: state.playlists
-})
+  playlists: state.playlists,
+});
 
 Dashboard.propTypes = {
   getPlaylists: PropTypes.func,
@@ -231,49 +235,55 @@ Dashboard.propTypes = {
   resetCurrentSelection: PropTypes.func,
   resetPlayer: PropTypes.func,
   removePlaylist: PropTypes.func,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
 
 const PageTitle = styled(Typography)({
   '&': {
     color: TEXT_PRIMARY,
-    fontSize: '1.75em'
-  }
+    fontSize: '1.75em',
+  },
 });
 
 const PageSubTitle = styled(Typography)({
   '&': {
     color: TEXT_PRIMARY,
-    fontSize: '1.15em'
-  }
+    fontSize: '1.15em',
+  },
 });
 
 const PageSubTitleSecondary = styled(Typography)({
   '&': {
     color: '#afafaf',
-    fontSize: '0.95em'
-  }
+    fontSize: '0.95em',
+  },
 });
 
-const WelcomeContainer = styled(({ isPlaylistsShowing, playlistsCount, ...other }) => <Grid {...other} />)({
-  marginBottom: props => !props.isPlaylistsShowing ? 64 : 0,
+const WelcomeContainer = styled(({ isPlaylistsShowing, playlistsCount, ...other }) => (
+  <Grid {...other} />
+))({
+  marginBottom: props => (!props.isPlaylistsShowing ? 64 : 0),
   height: props =>
     !props.isPlaylistsShowing
       ? !props.playlistsCount
-        ? 180 : 80
-    : !props.playlistsCount
-      ? 180 : 0,
-  overflow: 'hidden'
+        ? 180
+        : 80
+      : !props.playlistsCount
+      ? 180
+      : 0,
+  overflow: 'hidden',
 });
 
 const SearchBarContainer = styled(({ playlistsCount, ...other }) => <Grid {...other} />)({
-  marginBottom: props => !props.playlistsCount ? 200 : 0,
-  display: 'flex'
+  marginBottom: props => (!props.playlistsCount ? 200 : 0),
+  display: 'flex',
 });
 
-const PlaylistContainer = styled(({ isPlaylistsShowing, ...other }) => <List {...other} />)({
-  height: props => !props.isPlaylistsShowing ? 0 : 200,
-  overflow: props => !props.isPlaylistsShowing ? 'hidden' : 'auto',
-  maxHeight: 200
+const PlaylistContainer = styled(({ isPlaylistsShowing, ...other }) => (
+  <List {...other} />
+))({
+  height: props => (!props.isPlaylistsShowing ? 0 : 200),
+  overflow: props => (!props.isPlaylistsShowing ? 'hidden' : 'auto'),
+  maxHeight: 200,
 });

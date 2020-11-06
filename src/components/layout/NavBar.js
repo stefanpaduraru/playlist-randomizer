@@ -10,20 +10,20 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   logo: {
-    margin: 0
-  }
+    margin: 0,
+  },
 }));
 
-const Bar = (params) => {
+const Bar = params => {
   const { history } = params;
 
   const classes = useStyles();
@@ -35,8 +35,7 @@ const Bar = (params) => {
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={false}
-    >
-    </Menu>
+    ></Menu>
   );
 
   return (
@@ -49,28 +48,27 @@ const Bar = (params) => {
             variant="inherit"
             color="secondary"
             title="playlist-randomizer.com"
-            >
-              Playlist Randomizer
+          >
+            Playlist Randomizer
           </Link>
         </h2>
-        { renderMenu }
+        {renderMenu}
       </Toolbar>
-    </AppBar>)
-}
+    </AppBar>
+  );
+};
 
 class NavBar extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  }
+    history: PropTypes.object.isRequired,
+  };
 
   render() {
     const { history } = this.props;
 
-    return (
-      <Bar history={history}/>
-    );
+    return <Bar history={history} />;
   }
 }
 

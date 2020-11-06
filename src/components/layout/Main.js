@@ -7,41 +7,41 @@ import { makeStyles } from '@material-ui/core/styles';
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex'
+    display: 'flex',
   },
   toolbar: {
-    paddingRight: 24
+    paddingRight: 24,
   },
   toolbarIcon: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: '0 8px',
-    ...theme.mixins.toolbar
+    ...theme.mixins.toolbar,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   menuButton: {
-    marginRight: 36
+    marginRight: 36,
   },
   menuButtonHidden: {
-    display: 'none'
+    display: 'none',
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   drawerPaper: {
     position: 'relative',
@@ -49,25 +49,24 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerPaperClose: {
     overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9)
-    }
+      width: theme.spacing(9),
+    },
   },
-  appBarSpacer: {
-  },
+  appBarSpacer: {},
   content: {
     display: 'flex',
-    height: 'calc(100vh - 125px)'
+    height: 'calc(100vh - 125px)',
   },
   paper: {
     background: 'transparent',
@@ -76,14 +75,14 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
-    boxShadow: 'none'
+    boxShadow: 'none',
   },
   fixedHeight: {
-    height: 240
-  }
+    height: 240,
+  },
 }));
 
-const Main = (props) => {
+const Main = props => {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -96,6 +95,6 @@ const Main = (props) => {
       <CssBaseline />
     </React.Fragment>
   );
-}
+};
 
 export default Main;

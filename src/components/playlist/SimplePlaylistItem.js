@@ -6,28 +6,19 @@ import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { PlaylistIconContainer } from '../layout/icons/IconContainer';
 
-const SimplePlaylistItem = ({
-  id,
-  title,
-  onClick,
-  onRefresh,
-  onDelete,
-}) => (
+const SimplePlaylistItem = ({ id, title, onClick, onRefresh, onDelete }) => (
   <ListItem id={id} key={id}>
-    <ListItemText
-      primary={title}
-      onClick={onClick}
-    />
+    <ListItemText primary={title} onClick={onClick} />
     <ListItemIcon>
-        <PlaylistIconContainer onClick={onDelete}>
-          <RemoveCircleOutline />
-        </PlaylistIconContainer>
-      </ListItemIcon>
-      <ListItemIcon>
-        <PlaylistIconContainer onClick={onRefresh}>
-          <RefreshIcon />
-          </PlaylistIconContainer>
-      </ListItemIcon>
+      <PlaylistIconContainer onClick={onDelete}>
+        <RemoveCircleOutline />
+      </PlaylistIconContainer>
+    </ListItemIcon>
+    <ListItemIcon>
+      <PlaylistIconContainer onClick={onRefresh}>
+        <RefreshIcon />
+      </PlaylistIconContainer>
+    </ListItemIcon>
   </ListItem>
-)
+);
 export default React.memo(SimplePlaylistItem);

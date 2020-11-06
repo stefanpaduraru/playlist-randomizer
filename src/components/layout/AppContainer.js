@@ -10,18 +10,16 @@ class AppContainer extends Component {
 
     return (
       <>
-        <Main>
-          {!!children && children}
-        </Main>
+        <Main>{!!children && children}</Main>
         <Footer />
       </>
-    )
+    );
   }
 }
 
 AppContainer.propTypes = {
   match: PropTypes.object.isRequired,
-  children: PropTypes.object.isRequired
-}
+  children: PropTypes.object.isRequired,
+};
 
-export default (withRouter(AppContainer));
+export default withRouter(AppContainer);
