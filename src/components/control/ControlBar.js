@@ -46,7 +46,7 @@ export default function ControlBar({
       />
       <ControlButton
         tooltip={repeatTooltip}
-        active={repeat}
+        active={repeat || repeatCurrentSong}
         icon={repeatCurrentSong ? <RepeatOneIcon /> : <RepeatIcon />}
         click={toggleRepeat}
       />
