@@ -37,6 +37,12 @@ const About = () => {
             </a>
           </AboutParagraph>
           <AboutParagraph>Latest Improvements</AboutParagraph>
+          <AboutParagraph>(06 Nov 2020)</AboutParagraph>
+          <ul>
+            <li>
+              <AboutParagraph>added repeat current song option </AboutParagraph>
+            </li>
+          </ul>
           <AboutParagraph>(08 Oct 2020)</AboutParagraph>
           <ul>
             <li>
