@@ -10,7 +10,7 @@ export const loadStateFromStorage = () => {
   }
 };
 
-export const saveStateToStorage = (state) => {
+export const saveStateToStorage = state => {
   try {
     const serializedState = JSON.stringify(state);
     window.localStorage.setItem('state', serializedState);
@@ -37,9 +37,10 @@ export const defaultState = {
       videoId: null,
       thumb: null,
       progress: null,
-      index: 0
+      index: 0,
     },
     onDevice: null,
-    isRepeat: false
-  }
-}
+    isRepeat: true,
+    isRepeatCurrentSong: false,
+  },
+};
