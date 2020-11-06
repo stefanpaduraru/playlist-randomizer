@@ -107,7 +107,8 @@ export default About;
 
 const AboutContainer = styled(({ ...other }) => <Grid {...other} />)({
   marginBottom: 0,
-  overflow: 'hidden',
+  overflow: 'scroll',
+  maxHeight: '80vh',
 });
 
 const PageTitle = styled(Typography)({
