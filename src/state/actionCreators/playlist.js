@@ -13,38 +13,42 @@ import {
 } from '../actions/playlist';
 
 export function fetchPlaylist(playlistId, applyShuffle) {
-  return (dispatch) => {
-      dispatch(playlistIsLoading(true));
-      getPlaylistDataById(playlistId)
-        .then((response) => {
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            dispatch(playlistIsLoading(false));
-            return response;
-        })
-        .then((response) => response.json())
-        .then((playlist) => {
-          dispatch(playlistFetchDataSuccess(playlist.items[0]))
-          dispatch(fetchPlaylistItems(playlistId, false, applyShuffle))
-        })
-        .catch(() => dispatch(itemsHasErrored(true)));
+  return dispatch => {
+    dispatch(playlistIsLoading(true));
+    getPlaylistDataById(playlistId)
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        dispatch(playlistIsLoading(false));
+        return response;
+      })
+      .then(response => response.json())
+      .then(playlist => {
+        dispatch(playlistFetchDataSuccess(playlist.items[0]));
+        dispatch(fetchPlaylistItems(playlistId, false, applyShuffle));
+      })
+      .catch(() => dispatch(itemsHasErrored(true)));
   };
 }
 
-export function fetchPlaylistItems(playlistId, nextPageToken = false, applyShuffle = false) {
-  return (dispatch) => {
+export function fetchPlaylistItems(
+  playlistId,
+  nextPageToken = false,
+  applyShuffle = false,
+) {
+  return dispatch => {
     dispatch(itemsIsLoading(true));
     getPlaylistItemData(playlistId, nextPageToken)
-      .then((response) => {
-          if (!response.ok) {
-              throw Error(response.statusText);
-          }
-          // dispatch(itemsIsLoading(false));
-          return response;
+      .then(response => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        // dispatch(itemsIsLoading(false));
+        return response;
       })
-      .then((response) => response.json())
-      .then((playlist) => {
+      .then(response => response.json())
+      .then(playlist => {
         if (playlist.nextPageToken) {
           dispatch(fetchPlaylistItems(playlistId, playlist.nextPageToken, applyShuffle));
         } else {
@@ -52,7 +56,7 @@ export function fetchPlaylistItems(playlistId, nextPageToken = false, applyShuff
         }
         dispatch(itemsFetchDataSuccess(playlistId, playlist, applyShuffle));
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch(itemsIsLoading(false));
         dispatch(itemsHasErrored(error));
       });
@@ -64,88 +68,89 @@ export function loadItemsData(items) {
 }
 
 export function itemsHasErrored(err) {
-  console.log(err)
+  // eslint-disable-next-line no-console
+  console.log(err);
   return {
-      type: ITEMS_HAS_ERRORED,
-      hasErrored: true
+    type: ITEMS_HAS_ERRORED,
+    hasErrored: true,
   };
 }
 
 export function removePlaylist(payload) {
   return {
-      type: PLAYLIST_REMOVE,
-      payload
+    type: PLAYLIST_REMOVE,
+    payload,
   };
 }
 
 export function loadPlaylistData(data) {
   return {
     type: PLAYLIST_LOAD_DATA,
-    payload: data
+    payload: data,
   };
 }
 
 export function loadPlaylist(data) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(loadPlaylistData(data));
     dispatch(itemsIsLoading(true));
     dispatch(loadPlaylistItemsAndFinish(data.items));
-  }
+  };
 }
 
 export function loadPlaylistItemsAndFinish(items) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch(loadPlaylistItems(items));
     dispatch(itemsIsLoading(false));
-  }
+  };
 }
 
 export function loadPlaylistItems(items) {
   return {
     type: PLAYLIST_LOAD_ITEMS_DATA,
-    payload: items
+    payload: items,
   };
 }
 
 export function itemsIsLoading(payload) {
   return {
-      type: ITEMS_IS_LOADING,
-      payload
+    type: ITEMS_IS_LOADING,
+    payload,
   };
 }
 
 export function playlistIsLoading(payload) {
   return {
-      type: PLAYLIST_IS_LOADING,
-      payload
+    type: PLAYLIST_IS_LOADING,
+    payload,
   };
 }
 
 export function itemsFetchDataSuccess(playlistId, payload, applyShuffle) {
   if (applyShuffle) {
     return {
-        type: PLAYLIST_ITEMS_FETCH_DATA_SUCCESS_SHUFFLE,
-        playlistId,
-        payload
-    }
+      type: PLAYLIST_ITEMS_FETCH_DATA_SUCCESS_SHUFFLE,
+      playlistId,
+      payload,
+    };
   } else {
     return {
       type: PLAYLIST_ITEMS_FETCH_DATA_SUCCESS,
       playlistId,
-      payload
-  }
+      payload,
+    };
   }
 }
 
 export function playlistFetchDataSuccess(payload) {
   return {
     type: PLAYLIST_FETCH_DATA_SUCCESS,
-    payload
+    payload,
   };
 }
 
 export function resetCurrentSelection() {
   return {
-    type: PLAYLIST_RESET
+    type: PLAYLIST_RESET,
   };
 }

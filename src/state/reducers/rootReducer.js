@@ -8,5 +8,5 @@ export default combineReducers({
   playlists: playlistsReducer,
   currentSelection: currentSelectionReducer,
   app: appReducer,
-  player: playerReducer
+  player: playerReducer,
 });

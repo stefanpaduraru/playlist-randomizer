@@ -15,10 +15,9 @@ describe('Track', () => {
       skey: 1,
       selected: true,
       playVideo: mockFn,
-      video: {
-      }
+      video: {},
     };
-    const tree = renderer.create(<Track {...props}/>).toJSON();
+    const tree = renderer.create(<Track {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -36,23 +35,23 @@ describe('Track', () => {
             default: {
               url: 'https://i.ytimg.com/vi/6Fot9g9YKyw/default.jpg',
               width: 120,
-              height: 90
+              height: 90,
             },
             medium: {
               url: 'https://i.ytimg.com/vi/6Fot9g9YKyw/mqdefault.jpg',
               width: 320,
-              height: 180
+              height: 180,
             },
             high: {
               url: 'https://i.ytimg.com/vi/6Fot9g9YKyw/hqdefault.jpg',
               width: 480,
-              height: 360
-            }
-          }
-        }
-      }
-    }
-    const tree = renderer.create(<Track {...props}/>).toJSON();
+              height: 360,
+            },
+          },
+        },
+      },
+    };
+    const tree = renderer.create(<Track {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

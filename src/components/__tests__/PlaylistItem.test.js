@@ -15,8 +15,8 @@ describe('Playlist Item', () => {
       id: 1,
       title: 'Playlist #1',
       thumbUrl: 'https://i.ytimg.com/vi/0iMell14sVQ/default.jpg',
-      onClick: mockFn
-    }
+      onClick: mockFn,
+    };
     const tree = renderer.create(<PlaylistItem {...props} />).toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { AboutIcon } from './icons/AboutIcon';
 import VisualEffectsIcon from './icons/VisualEffectsIcon';
@@ -9,6 +8,6 @@ const Footer = () => (
     <AboutIcon />
     <VisualEffectsIcon />
   </Grid>
-)
+);
 
 export default Footer;

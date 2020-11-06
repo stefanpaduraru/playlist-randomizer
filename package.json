@@ -1,20 +1,16 @@
 {
   "name": "playlistrandomizer",
   "version": "0.1.3",
-  "private": true,
+  "private": false,
+  "license": "BSD-3-Clause",
   "dependencies": {
     "@material-ui/core": "^4.3.3",
     "@material-ui/icons": "^4.2.1",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-addons-test-utils": "^15.6.2",
-    "redux-devtools-extension": "^2.13.8",
     "react-dom": "^16.8.0",
     "react-ga": "^2.7.0",
-    "redux-mock-store": "^1.5.3",
     "react-player": "^1.13.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
@@ -22,13 +18,18 @@
     "react-scripts": "3.1.1",
     "react-test-renderer": "^16.11.0",
     "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
   },
   "browserslist": {
     "production": [
@@ -45,6 +46,46 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-plugin-inline-dotenv": "1.2.2",
-    "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3"
+    "babel-plugin-transform-object-rest-spread": "7.0.0-beta.3",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "prettier": {
+    "printWidth": 90,
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "trailingComma": "all",
+    "endOfLine": "lf"
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

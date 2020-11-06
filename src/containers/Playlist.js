@@ -170,7 +170,6 @@ class Playlist extends React.Component {
   playbackEnded() {
     const { player } = this.props;
     if (!player.isRepeatCurrentSong) {
-      console.log('aici');
       this.playNext();
     }
   }

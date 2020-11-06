@@ -15,19 +15,19 @@ describe('Playlist', () => {
 
   beforeEach(() => {
     defaultStore = mockStore({
-      ...defaultState
+      ...defaultState,
     });
 
     contentStore = mockStore({
       ...defaultState,
       currentSelection: {
-        ...testPlaylist
+        ...testPlaylist,
       },
       playlists: {
-        'PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1': {
-          ...testPlaylist
-        }
-      }
+        PLnUPn_O5yC812Eo29oGft8D9tzSKAv4q1: {
+          ...testPlaylist,
+        },
+      },
     });
     defaultStore.dispatch = jest.fn();
     contentStore.dispatch = jest.fn();
@@ -35,7 +35,7 @@ describe('Playlist', () => {
     contentComponent = renderer.create(
       <Provider store={contentStore}>
         <Playlist />
-      </Provider>
+      </Provider>,
     );
   });
 

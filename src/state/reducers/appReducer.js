@@ -1,11 +1,5 @@
-import {
-  ITEMS_IS_LOADING,
-  PLAYLIST_IS_LOADING
-} from '../actions/playlist';
-import {
-  PLAYLISTS_IS_SHOWING,
-  VISUAL_EFFECTS_TOGGLE,
-} from '../actions/app';
+import { ITEMS_IS_LOADING, PLAYLIST_IS_LOADING } from '../actions/playlist';
+import { PLAYLISTS_IS_SHOWING, VISUAL_EFFECTS_TOGGLE } from '../actions/app';
 
 export default (state = {}, action) => {
   const { payload } = action;
@@ -14,27 +8,27 @@ export default (state = {}, action) => {
     case ITEMS_IS_LOADING:
       return {
         ...state,
-        isItemsLoading: payload
-      }
+        isItemsLoading: payload,
+      };
 
     case PLAYLIST_IS_LOADING:
       return {
         ...state,
-        isPlaylistLoading: payload
-      }
+        isPlaylistLoading: payload,
+      };
 
     case PLAYLISTS_IS_SHOWING:
       return {
         ...state,
-        isPlaylistsShowing: payload
-      }
+        isPlaylistsShowing: payload,
+      };
     case VISUAL_EFFECTS_TOGGLE:
       return {
         ...state,
-        isVisualEffectsOn: payload
-      }
+        isVisualEffectsOn: payload,
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};

@@ -9,24 +9,25 @@ const PlaylistItem = ({
   onClick,
   visualEffectsEnabled,
   onDelete,
-  onRefresh
-}) => (
-  visualEffectsEnabled
-    ? <FancyPlaylistItem
-        onClick={onClick}
-        id={id}
-        title={title}
-        thumbUrl={thumbUrl}
-        onDelete={onDelete}
-        onRefresh={onRefresh}
-      />
-    : <SimplePlaylistItem
-        onClick={onClick}
-        id={id}
-        title={title}
-        onDelete={onDelete}
-        onRefresh={onRefresh}
-      />
-  )
+  onRefresh,
+}) =>
+  visualEffectsEnabled ? (
+    <FancyPlaylistItem
+      onClick={onClick}
+      id={id}
+      title={title}
+      thumbUrl={thumbUrl}
+      onDelete={onDelete}
+      onRefresh={onRefresh}
+    />
+  ) : (
+    <SimplePlaylistItem
+      onClick={onClick}
+      id={id}
+      title={title}
+      onDelete={onDelete}
+      onRefresh={onRefresh}
+    />
+  );
 
 export default React.memo(PlaylistItem);
