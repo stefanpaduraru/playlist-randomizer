@@ -6,10 +6,11 @@ import {
   isPlaying,
   isMuted,
   isRepeat,
+  isRepeatCurrentSong,
   nowPlayingProgress,
   nowPlayingIndex,
   onDevice,
-  errorPlaying
+  errorPlaying,
 } from '../state/actionCreators/player';
 import { loadPlaylist } from '../state/actionCreators/playlist';
 import ControlBar from '../components/control/ControlBar';
@@ -25,35 +26,31 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 import { BackIcon } from '../components/layout/icons/BackIcon';
 
 const useStyles = makeStyles({
   avatar: {
     margin: 10,
     width: 80,
-    height: 80
+    height: 80,
   },
   videosTitle: {
     padding: 0,
     margin: 0,
     marginBottom: '5px',
-    fontWeight: 800
-  }
+    fontWeight: 800,
+  },
 });
 
 export function ImageAvatar({ src }) {
   const classes = useStyles();
-  return (
-      <Avatar src={src} className={classes.avatar} />
-  );
+  return <Avatar src={src} className={classes.avatar} />;
 }
 
 export function VideosTitle({ children }) {
   const classes = useStyles();
-  return (
-      <Typography className={classes.videosTitle}>{children}</Typography>
-  );
+  return <Typography className={classes.videosTitle}>{children}</Typography>;
 }
 
 class Playlist extends React.Component {
@@ -71,11 +68,9 @@ class Playlist extends React.Component {
       id: item.id,
       title: item.snippet.title,
       videoId: item.contentDetails.videoId,
-      thumb: item.snippet.thumbnails.default
-        ? item.snippet.thumbnails.default.url
-        : '',
+      thumb: item.snippet.thumbnails.default ? item.snippet.thumbnails.default.url : '',
       progress: 0,
-      index: index
+      index: index,
     });
     isPlaying(true);
     this.scrollToVideo(item.id);
@@ -95,7 +90,7 @@ class Playlist extends React.Component {
         ? nextVideo.snippet.thumbnails.default.url
         : '',
       progress: 0,
-      index: index
+      index: index,
     });
     isPlaying(true);
     this.scrollToVideo(nextVideo.id);
@@ -106,13 +101,18 @@ class Playlist extends React.Component {
   playNext() {
     const { player, playlist, loadPlaylistData, nowPlaying, isPlaying } = this.props;
 
-    if (playlist.items && playlist.items.length === player.nowPlaying.index + 1 && player.isRepeat) {
+    if (
+      playlist.items &&
+      playlist.items.length === player.nowPlaying.index + 1 &&
+      player.isRepeat
+    ) {
       loadPlaylistData({ ...playlist, items: shuffle(playlist.items || []) });
       this.playVideoByIndex(0);
     } else {
-      const nextVideo = playlist.items && playlist.items.length
-        ? playlist.items[player.nowPlaying.index + 1]
-        : false;
+      const nextVideo =
+        playlist.items && playlist.items.length
+          ? playlist.items[player.nowPlaying.index + 1]
+          : false;
 
       if (nextVideo) {
         nowPlaying({
@@ -120,11 +120,11 @@ class Playlist extends React.Component {
           title: nextVideo.snippet.title,
           videoId: nextVideo.contentDetails.videoId,
           thumb:
-          (nextVideo.snippet.thumbnails && nextVideo.snippet.thumbnails.default)
-            ? nextVideo.snippet.thumbnails.default.url
-            : '',
+            nextVideo.snippet.thumbnails && nextVideo.snippet.thumbnails.default
+              ? nextVideo.snippet.thumbnails.default.url
+              : '',
           progress: 0,
-          index: player.nowPlaying.index + 1
+          index: player.nowPlaying.index + 1,
         });
         isPlaying(true);
         this.scrollToVideo(nextVideo.id);
@@ -147,7 +147,7 @@ class Playlist extends React.Component {
           ? prevVideo.snippet.thumbnails.default.url
           : '',
         progress: 0,
-        index: player.nowPlaying.index - 1
+        index: player.nowPlaying.index - 1,
       });
       isPlaying(true);
       this.scrollToVideo(prevVideo.id);
@@ -164,11 +164,15 @@ class Playlist extends React.Component {
   playbackError(e) {
     const { errorPlaying } = this.props;
     errorPlaying();
-    this.playNext()
+    this.playNext();
   }
 
   playbackEnded() {
-    this.playNext()
+    const { player } = this.props;
+    if (!player.isRepeatCurrentSong) {
+      console.log('aici');
+      this.playNext();
+    }
   }
 
   playbackStarted() {
@@ -187,8 +191,18 @@ class Playlist extends React.Component {
   }
 
   toggleRepeat() {
-    const { player, isRepeat } = this.props;
-    isRepeat(!player.isRepeat);
+    const { player, isRepeat, isRepeatCurrentSong } = this.props;
+    if (player.isRepeatCurrentSong) {
+      isRepeatCurrentSong(false);
+      isRepeat(false);
+    } else {
+      if (!player.isRepeat) {
+        isRepeat(true);
+      } else {
+        isRepeatCurrentSong(true);
+        isRepeat(false);
+      }
+    }
   }
 
   shufflePlaylist() {
@@ -207,7 +221,7 @@ class Playlist extends React.Component {
   constructor(props) {
     super(props);
     this.playbackEnded = this.playbackEnded.bind(this);
-    this.playbackError = this.playbackError.bind(this)
+    this.playbackError = this.playbackError.bind(this);
     this.playbackStarted = this.playbackStarted.bind(this);
     this.playbackPaused = this.playbackPaused.bind(this);
     this.playbackProgress = this.playbackProgress.bind(this);
@@ -228,101 +242,140 @@ class Playlist extends React.Component {
     if (!playlist || !playlist.id) {
       return (
         <div>
-          <h3>Could not load playlist.
-          <BackIcon /></h3>
+          <h3>
+            Could not load playlist.
+            <BackIcon />
+          </h3>
         </div>
-      )
+      );
     }
     const { snippet, items } = playlist;
-    items && items.length && !player.isPlaying && !player.nowPlaying.id &&
+    items &&
+      items.length &&
+      !player.isPlaying &&
+      !player.nowPlaying.id &&
       this.playVideoByIndex(0);
 
     return (
       <React.Fragment>
         <Grid container justify="flex-start" alignItems="center" spacing={0}>
           <Grid item style={{ marginLeft: '20px' }}>
-            {app.isVisualEffectsOn && <ImageAvatar
-              src={
-                snippet
-                ? snippet.thumbnails.medium.url
-                  ? snippet.thumbnails.medium.url
-                  : snippet.thumbnails.default.url
-                : ''}
-              />}
+            {app.isVisualEffectsOn && (
+              <ImageAvatar
+                src={
+                  snippet
+                    ? snippet.thumbnails.medium.url
+                      ? snippet.thumbnails.medium.url
+                      : snippet.thumbnails.default.url
+                    : ''
+                }
+              />
+            )}
           </Grid>
           <Grid item>
-            <h2 style={{ margin: '0px 10px 0px', padding: 0 }}>&nbsp;{snippet ? snippet.title : ''}</h2>
+            <h2 style={{ margin: '0px 10px 0px', padding: 0 }}>
+              &nbsp;{snippet ? snippet.title : ''}
+            </h2>
             <ControlBar
-                  playNext={this.playNext}
-                  playPrevious={this.playPrevious}
-                  togglePlayPause={this.togglePlayPause}
-                  isPlaying={player.isPlaying}
-                  toggleRepeat={this.toggleRepeat}
-                  shuffle={this.shufflePlaylist}
-                  repeat={player.isRepeat}
-                  muted={player.isMuted}
-                />
+              playNext={this.playNext}
+              playPrevious={this.playPrevious}
+              togglePlayPause={this.togglePlayPause}
+              isPlaying={player.isPlaying}
+              toggleRepeat={this.toggleRepeat}
+              shuffle={this.shufflePlaylist}
+              repeat={player.isRepeat}
+              repeatCurrentSong={player.isRepeatCurrentSong}
+              muted={player.isMuted}
+            />
           </Grid>
         </Grid>
 
-        <Card elevation={1} style={{ background: 'rgba(255, 255, 255, 0.1', marginTop: 15 }}>
-          <CardContent style= {{ height: 'calc(100vh - 300px)' }}>
-            <Grid container justify="flex-start" spacing={1} style={{ position: 'relative', height: '100%' }}>
-              <Grid item xs={12} sm={12} md={6} lg={6} style={{ position: 'relative', height: '100%' }}>
+        <Card
+          elevation={1}
+          style={{ background: 'rgba(255, 255, 255, 0.1', marginTop: 15 }}
+        >
+          <CardContent style={{ height: 'calc(100vh - 300px)' }}>
+            <Grid
+              container
+              justify="flex-start"
+              spacing={1}
+              style={{ position: 'relative', height: '100%' }}
+            >
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                style={{ position: 'relative', height: '100%' }}
+              >
                 {
                   <>
-                  <VideosTitle>Videos:&nbsp;
-                    {!app.isItemsLoading && items && `(${player.nowPlaying.index + 1}/${items.length})`}
-                  </VideosTitle>
-                  <>
-                    {app.isItemsLoading && items &&
-                    <React.Fragment>
-                        &nbsp;
-                      <CircularProgress size={14}/>
-                    </React.Fragment>}
-                  </>
-                </>
-                }
-                {
-                  !app.isItemsLoading && items && items.length > 0 &&
-                    <List style={{ position: 'relative', height: 'calc(100% - 29px)', overflow: 'auto' }} >
-                      {items.map((item, i) =>
-                        <Track
-                          key={i}
-                          skey={i}
-                          video={item}
-                          selected={player.nowPlaying.id === item.id}
-                          playVideo={this.playVideo}
-                          visualEffectsEnabled={app.isVisualEffectsOn}
-                        />
+                    <VideosTitle>
+                      Videos:&nbsp;
+                      {!app.isItemsLoading &&
+                        items &&
+                        `(${player.nowPlaying.index + 1}/${items.length})`}
+                    </VideosTitle>
+                    <>
+                      {app.isItemsLoading && items && (
+                        <React.Fragment>
+                          &nbsp;
+                          <CircularProgress size={14} />
+                        </React.Fragment>
                       )}
-                    </List>
+                    </>
+                  </>
                 }
+                {!app.isItemsLoading && items && items.length > 0 && (
+                  <List
+                    style={{
+                      position: 'relative',
+                      height: 'calc(100% - 29px)',
+                      overflow: 'auto',
+                    }}
+                  >
+                    {items.map((item, i) => (
+                      <Track
+                        key={i}
+                        skey={i}
+                        video={item}
+                        selected={player.nowPlaying.id === item.id}
+                        playVideo={this.playVideo}
+                        visualEffectsEnabled={app.isVisualEffectsOn}
+                      />
+                    ))}
+                  </List>
+                )}
               </Grid>
               <Grid item xs={12} sm={12} md={6} lg={6}>
-              {
-                !app.isItemsLoading && player.nowPlaying &&
-                <ReactPlayer
-                  style={{ margin: '29px auto 0px auto' }}
-                  controls={true}
-                  width={'800'}
-                  height={'calc(100% - 29px)'}
-                  playing={player.isPlaying}
-                  url={(player.nowPlaying.videoId && `https://www.youtube.com/watch?v=${player.nowPlaying.videoId}`) || ''}
-                  onEnded={this.playbackEnded}
-                  onStart={this.playbackStarted}
-                  onPause={this.playbackPaused}
-                  onPlay={this.playbackStarted}
-                  onError={this.playbackError}
-                  // onProgress={this.playbackProgress}
-                />
-              }
+                {!app.isItemsLoading && player.nowPlaying && (
+                  <ReactPlayer
+                    style={{ margin: '29px auto 0px auto' }}
+                    controls={true}
+                    width={'800'}
+                    height={'calc(100% - 29px)'}
+                    playing={player.isPlaying}
+                    url={
+                      (player.nowPlaying.videoId &&
+                        `https://www.youtube.com/watch?v=${player.nowPlaying.videoId}`) ||
+                      ''
+                    }
+                    onEnded={this.playbackEnded}
+                    onStart={this.playbackStarted}
+                    onPause={this.playbackPaused}
+                    onPlay={this.playbackStarted}
+                    onError={this.playbackError}
+                    loop={player.isRepeatCurrentSong}
+                    // onProgress={this.playbackProgress}
+                  />
+                )}
               </Grid>
             </Grid>
-        </CardContent>
-      </Card>
-    </React.Fragment>
-    )
+          </CardContent>
+        </Card>
+      </React.Fragment>
+    );
   }
 }
 
@@ -335,28 +388,30 @@ Playlist.propTypes = {
   isPlaying: PropTypes.func,
   isMuted: PropTypes.func,
   isRepeat: PropTypes.func,
+  isRepeatCurrentSong: PropTypes.func,
   nowPlayingProgress: PropTypes.func,
   nowPlayingIndex: PropTypes.func,
-  onDevice: PropTypes.func
-}
+  onDevice: PropTypes.func,
+};
 
 const mapDispatchToProps = dispatch => ({
-  loadPlaylistData: (data) => dispatch(loadPlaylist(data)),
-  nowPlaying: (data) => dispatch(nowPlaying(data)),
-  isPlaying: (data) => dispatch(isPlaying(data)),
-  isMuted: (data) => dispatch(isMuted(data)),
-  isRepeat: (data) => dispatch(isRepeat(data)),
-  nowPlayingProgress: (data) => dispatch(nowPlayingProgress(data)),
-  nowPlayingIndex: (data) => dispatch(nowPlayingIndex(data)),
-  onDevice: (data) => dispatch(onDevice(data)),
-  errorPlaying: () => dispatch(errorPlaying())
-})
+  loadPlaylistData: data => dispatch(loadPlaylist(data)),
+  nowPlaying: data => dispatch(nowPlaying(data)),
+  isPlaying: data => dispatch(isPlaying(data)),
+  isMuted: data => dispatch(isMuted(data)),
+  isRepeat: data => dispatch(isRepeat(data)),
+  isRepeatCurrentSong: data => dispatch(isRepeatCurrentSong(data)),
+  nowPlayingProgress: data => dispatch(nowPlayingProgress(data)),
+  nowPlayingIndex: data => dispatch(nowPlayingIndex(data)),
+  onDevice: data => dispatch(onDevice(data)),
+  errorPlaying: () => dispatch(errorPlaying()),
+});
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   playlist: state.currentSelection,
   playlists: state.playlists,
   app: state.app,
-  player: state.player
-})
+  player: state.player,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Playlist);
