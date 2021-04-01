@@ -6,6 +6,7 @@ import Link from '@material-ui/core/Link';
 import Menu from '@material-ui/core/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
+import Coffee from './Coffee';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,7 +28,7 @@ const Bar = params => {
   const { history } = params;
 
   const classes = useStyles();
-  const menuId = 'primary-search-account-menu';
+  const menuId = 'account-menu';
   const renderMenu = (
     <Menu
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -40,7 +41,7 @@ const Bar = params => {
 
   return (
     <AppBar position="static" elevation={0} className={classes.root}>
-      <Toolbar>
+      <Toolbar style={{ justifyContent: 'space-between' }}>
         <h2 onClick={() => history.push('/')} className={classes.logo}>
           <Link
             href="/"
@@ -53,6 +54,9 @@ const Bar = params => {
           </Link>
         </h2>
         {renderMenu}
+        <h2 onClick={() => history.push('/')} className={classes.logo}>
+          <Coffee />
+        </h2>
       </Toolbar>
     </AppBar>
   );
