@@ -262,7 +262,7 @@ class Playlist extends React.Component {
             {app.isVisualEffectsOn && (
               <ImageAvatar
                 src={
-                  snippet
+                  snippet && snippet.thumbnails
                     ? snippet.thumbnails.medium.url
                       ? snippet.thumbnails.medium.url
                       : snippet.thumbnails.default.url
