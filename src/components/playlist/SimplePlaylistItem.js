@@ -14,11 +14,13 @@ const SimplePlaylistItem = ({ id, title, onClick, onRefresh, onDelete }) => (
         <RemoveCircleOutline />
       </PlaylistIconContainer>
     </ListItemIcon>
-    <ListItemIcon>
-      <PlaylistIconContainer onClick={onRefresh}>
-        <RefreshIcon />
-      </PlaylistIconContainer>
-    </ListItemIcon>
+    {onRefresh && (
+      <ListItemIcon>
+        <PlaylistIconContainer onClick={onRefresh}>
+          <RefreshIcon />
+        </PlaylistIconContainer>
+      </ListItemIcon>
+    )}
   </ListItem>
 );
 export default React.memo(SimplePlaylistItem);

@@ -12,4 +12,5 @@ export const BUTTON_ACTIVE_BG = 'rgba(255, 0, 126, 0.1)';
 export const PAPER = 'transparent';
 export const TEXT_PRIMARY = '#fff';
 export const TEXT_SECONDARY = 'rgba(255, 255, 255,0.8)';
+export const TEXT_DARK = 'rgba(0, 0, 0, 0.54)';
 export const TEXT_SECONDARY_DIMMED = 'rgba(255, 255, 255,0.5)';

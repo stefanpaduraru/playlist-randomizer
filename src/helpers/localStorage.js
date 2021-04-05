@@ -21,11 +21,14 @@ export const saveStateToStorage = state => {
 
 export const defaultState = {
   playlists: {},
+  mixes: {},
   currentSelection: null,
   app: {
     isPlaylistLoading: false,
     isItemsLoading: false,
     isPlaylistsShowing: true,
+    isMixesShowing: true,
+    mixToggleCreate: false,
     isVisualEffectsOn: true,
   },
   player: {

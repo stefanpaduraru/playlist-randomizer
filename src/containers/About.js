@@ -23,7 +23,7 @@ const About = () => {
             playlists.
           </AboutParagraph>
           <PageSubTitle>
-            It's an opensource project so any contributions are appreciated.
+            It's an open-source project so any contributions are appreciated.
           </PageSubTitle>
           <AboutParagraph>
             Stefan Paduraru&nbsp;-&nbsp;
@@ -37,6 +37,15 @@ const About = () => {
             </a>
           </AboutParagraph>
           <AboutParagraph>Latest Improvements</AboutParagraph>
+          <AboutParagraph>(05 Apr 2021)</AboutParagraph>
+          <ul>
+            <li>
+              <AboutParagraph>
+                added mix features (i know it's been a while since you guys asked for
+                this){' '}
+              </AboutParagraph>
+            </li>
+          </ul>
           <AboutParagraph>(06 Nov 2020)</AboutParagraph>
           <ul>
             <li>
