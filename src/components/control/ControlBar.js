@@ -26,7 +26,7 @@ export default function ControlBar({
     : 'Repeat is off';
 
   return (
-    <Grid container justify="flex-start" alignItems="center" spacing={0}>
+    <Grid container justifyContent="flex-start" alignItems="center" spacing={0}>
       <ControlButton
         tooltip="Previous track"
         icon={<SkipPreviousIcon />}

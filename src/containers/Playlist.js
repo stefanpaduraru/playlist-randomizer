@@ -257,7 +257,7 @@ class Playlist extends React.Component {
 
     return (
       <React.Fragment>
-        <Grid container justify="flex-start" alignItems="center" spacing={0}>
+        <Grid container justifyContent="flex-start" alignItems="center" spacing={0}>
           <Grid item style={{ marginLeft: '20px' }}>
             {app.isVisualEffectsOn && (
               <ImageAvatar
@@ -296,7 +296,7 @@ class Playlist extends React.Component {
           <CardContent style={{ height: 'calc(100vh - 300px)' }}>
             <Grid
               container
-              justify="flex-start"
+              justifyContent="flex-start"
               spacing={1}
               style={{ position: 'relative', height: '100%' }}
             >
@@ -336,6 +336,7 @@ class Playlist extends React.Component {
                   >
                     {items.map((item, i) => (
                       <Track
+                        playlist={playlist}
                         key={i}
                         skey={i}
                         video={item}

@@ -175,14 +175,8 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const {
-      playlists,
-      mixes,
-      app,
-      playlistsIsShowing,
-      mixesIsShowing,
-      mixToggleCreate,
-    } = this.props;
+    const { playlists, mixes, app, playlistsIsShowing, mixesIsShowing, mixToggleCreate } =
+      this.props;
     const playlistsCount = Object.entries(playlists).length;
     const mixesCount = Object.entries(mixes).length;
 

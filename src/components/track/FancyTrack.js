@@ -1,13 +1,13 @@
 import React from 'react';
 import { LI_HOVER } from '../../constants/colors';
-import { styled } from '@material-ui/core';
+import { styled, Typography } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 
-const FancyTrack = ({ skey, video, selected, playVideo }) => (
+const FancyTrack = ({ skey, video, selected, playVideo, playlist }) => (
   <React.Fragment key={skey}>
     <StyledListItem
       onClick={() => playVideo(video, skey)}
@@ -29,7 +29,17 @@ const FancyTrack = ({ skey, video, selected, playVideo }) => (
         />
       </ListItemAvatar>
       <ListItemText
-        primary={(!!video && !!video.snippet && video.snippet.title) || null}
+        primary={
+          (!!video && !!video.snippet && (
+            <>
+              {video.snippet.title}
+              <Typography variant="caption" fontWeight="light" display="block">
+                {video.snippet.videoOwnerChannelTitle}
+              </Typography>
+            </>
+          )) ||
+          null
+        }
       />
     </StyledListItem>
     <Divider />
@@ -40,7 +50,12 @@ export default React.memo(FancyTrack);
 
 const StyledListItem = styled(ListItem)({
   cursor: 'pointer',
-  '&.Mui-selected, &.Mui-selected:hover, &:hover': {
+  borderRadius: '7px',
+  '&:hover': {
     backgroundColor: LI_HOVER,
+  },
+  '&.Mui-selected, &.Mui-selected:hover': {
+    backgroundColor: '#00000090',
+    border: '1px solid #ffffff40',
   },
 });

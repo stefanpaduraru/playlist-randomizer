@@ -12,7 +12,7 @@ export function getPlaylistDataById(playlistId) {
 
 export function getPlaylistItemData(playlistId, nextPageToken = false) {
   const fields =
-    'nextPageToken,items(id,snippet/title,snippet/description,snippet/thumbnails,contentDetails(videoId,startAt,endAt))';
+    'nextPageToken,items(id,snippet/title,snippet/description,snippet/thumbnails,snippet/channelTitle,snippet/videoOwnerChannelTitle,contentDetails(videoId,startAt,endAt))';
   const url = `${apiBaseURL}/playlistItems?key=${apiKey}&fields=${fields}&maxResults=50&part=snippet%2CcontentDetails&playlistId=${playlistId}&pageToken=${
     nextPageToken || ''
   }`;
