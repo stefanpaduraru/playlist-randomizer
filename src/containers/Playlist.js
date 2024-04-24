@@ -28,6 +28,7 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import ReactPlayer from 'react-player';
 import { BackIcon } from '../components/layout/icons/BackIcon';
+import MediaControls from '../components/playlist/MediaControls';
 
 const useStyles = makeStyles({
   avatar: {
@@ -257,6 +258,7 @@ class Playlist extends React.Component {
 
     return (
       <React.Fragment>
+        <MediaControls onNext={this.playNext} onPrevious={this.playPrevious} />
         <Grid container justifyContent="flex-start" alignItems="center" spacing={0}>
           <Grid item style={{ marginLeft: '20px' }}>
             {app.isVisualEffectsOn && (
